@@ -1,0 +1,22 @@
+{
+    "cache": true,
+    "defaultSeverity": "warning",
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "fix": true,
+    "rules": {
+        "selector-class-pattern": null
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.scss",
+                "**/*.scss"
+            ],
+            "extends": [
+                "stylelint-config-standard-scss"
+            ]
+        }
+    ]
+}
