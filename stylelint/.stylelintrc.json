@@ -6,7 +6,33 @@
     ],
     "fix": true,
     "rules": {
-        "selector-class-pattern": null
+        "color-function-notation": "modern",
+        "color-hex-length": "long",
+        "comment-whitespace-inside": "always",
+        "custom-property-empty-line-before": "never",
+        "declaration-block-no-redundant-longhand-properties": false,
+        "declaration-empty-line-before": "never",
+        "declaration-property-unit-allowed-list": {
+            "font-size": [
+                "px",
+                "rem"
+            ]
+        },
+        "font-family-name-quotes": "always-unless-keyword",
+        "font-weight-notation": "numeric",
+        "function-name-case": "lower",
+        "function-url-quotes": "always",
+        "import-notation": "string",
+        "max-nesting-depth": 2,
+        "media-feature-range-notation": "prefix",
+        "rule-empty-line-before": "always",
+        "selector-attribute-quotes": "always",
+        "selector-class-pattern": null,
+        "selector-max-compound-selectors": 3,
+        "selector-pseudo-element-colon-notation": "double",
+        "selector-type-case": "lower",
+        "shorthand-property-no-redundant-values": false,
+        "value-keyword-case": "lower"
     },
     "overrides": [
         {
@@ -16,7 +42,36 @@
             ],
             "extends": [
                 "stylelint-config-standard-scss"
-            ]
+            ],
+            "rules": {
+                "scss/at-mixin-named-arguments": "always",
+                "scss/dollar-variable-empty-line-after": [
+                    "always",
+                    {
+                        "expect": [
+                            "last-nested",
+                            "before-dollar-variable"
+                        ],
+                        "ignore": [
+                            "inside-single-line-block"
+                        ]
+                    }
+                ],
+                "scss/dollar-variable-first-in-block": [
+                    true,
+                    {
+                        "except": [
+                            "root"
+                        ],
+                        "ignore": [
+                            "comments",
+                            "imports"
+                        ]
+                    }
+                ],
+                "scss/dollar-variable-no-missing-interpolation": true
+            }
         }
     ]
 }
+
