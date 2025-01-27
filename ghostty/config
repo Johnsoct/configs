@@ -1,0 +1,9 @@
+theme = "Operator Mono Dark"
+font-family = "Dank Mono"
+cursor-style = block
+shell-integration-features = no-cursor
+window-padding-x = 3
+window-padding-y = 3
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
