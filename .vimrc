@@ -72,7 +72,11 @@ let mapleader = " "
 " :Vex<CR> - right side of argument, what you're mapping to
 
 " SOURCE CHANGES
-nnoremap <nnoremap <leader><cr> :so ~/.vimrc<cr>
+nnoremap <leader><cr> :so ~/.vimrc<cr>
+
+" MOVEMENT
+nnoremap j jzz
+nnoremap k kzz
 
 " EXIT WHILE INSERTING
 inoremap <C-c> <esc>
