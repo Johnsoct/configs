@@ -20,6 +20,7 @@ Plug 'junegunn/fzf.vim'
 " Themes
 Plug 'joshdick/onedark.vim'
 Plug 'raphamorim/lucario'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 call plug#end()
 
@@ -33,7 +34,7 @@ call plug#end()
 
 set hls ic
 syntax enable
-colorscheme onedark 
+colorscheme catppuccin-mocha " catpuccin catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 set clipboard=unnamed
 set relativenumber
 set re=0
@@ -90,6 +91,21 @@ nnoremap <leader>rg :Rg<Space>
 " QUICKFIX
 nnoremap <C-j> :cnext<CR> " Quickfix next
 nnoremap <C-k> :cprev<CR> " Quickfix prev
+
+" CLIPBOARD MAGIC (assumes set clipboard!=unnamed)
+nnoremap <leader>y "+y " enables copying the result of complex motions to the OS clipboard
+vnoremap <leader>y "+y " enables copying a thing in visual mode to OS clipboard
+nnoremap <leader>Y gg"+yG " copies the entire file
+
+" LINE MANIPULATION
+vnoremap J :m '>+1<CR>gv=gv " moves selected code down one line
+vnoremap K :m '<-2<CR>gv=gv " moves selected code up one line
+
+" Explanation for line manipulation keymaps:
+" '> is the beginning of a highlighted region
+" '< is the end of a highlighted region
+" :m is performing a move of the selected region to outside of the highlighted
+" press enter, then highlight my previous highlight (gv=gv)
 
 " KEYMAPPING END 
 " KEYMAPPING END 
