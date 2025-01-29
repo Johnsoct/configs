@@ -1,9 +1,27 @@
-theme = "Operator Mono Dark"
+theme = "catppuccin-mocha"
+
 font-family = "Dank Mono"
+font-size = 18
+
 cursor-style = block
 shell-integration-features = no-cursor
-window-padding-x = 3
-window-padding-y = 3
+
+window-padding-x = 16
+window-padding-y = 0
+window-padding-balance = false
+window-padding-color = extend
+window-inherit-working-directory = false
+window-decoration = false
+window-inherit-font-size = true
+window-save-state = always
+
 clipboard-read = allow
 clipboard-write = allow
 clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+
+linux-cgroup = always
+
+# command = /usr/local/bin/zellij
+
+keybind = global:ctrl+s=toggle_quick_terminal
