@@ -24,4 +24,4 @@ linux-cgroup = always
 
 # command = /usr/local/bin/zellij
 
-keybind = global:ctrl+s=toggle_quick_terminal
+# keybind = global:ctrl+s=toggle_quick_terminal
