@@ -21,6 +21,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
+Plug 'posva/vim-vue'
 " Themes
 Plug 'joshdick/onedark.vim'
 Plug 'raphamorim/lucario'
@@ -123,3 +124,6 @@ vnoremap K :m '<-2<CR>gv=gv " moves selected code up one line
 " KEYMAPPING END 
 " KEYMAPPING END 
 " KEYMAPPING END 
+
+
+" TEsting pull script 1
