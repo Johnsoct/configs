@@ -17,6 +17,10 @@ call plug#begin()
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'machakann/vim-highlightedyank'
 " Themes
 Plug 'joshdick/onedark.vim'
 Plug 'raphamorim/lucario'
@@ -35,7 +39,8 @@ call plug#end()
 set hls ic
 syntax enable
 colorscheme catppuccin-mocha " catpuccin catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-set clipboard=unnamed
+let g:airline_theme='minimalist'
+set clipboard=unnamedplus
 set relativenumber
 set re=0
 
@@ -88,13 +93,17 @@ nnoremap <leader>pv :Vex<CR>
 nnoremap <leader><CR> :so ~/.vimrc<CR>
 
 " FZF
-nnoremap <leader>pf :Files<CR> " Files (junegunn/fzf)
-nnoremap <leader>pg :GFiles<CR> " GFiles (junegunn/fzf)
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :GFiles?<CR>
+ 
+" GREP/RIPGREP
 nnoremap <leader>rg :Rg<Space>
 
 " QUICKFIX
-nnoremap <C-j> :cnext<CR> " Quickfix next
-nnoremap <C-k> :cprev<CR> " Quickfix prev
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprev<CR>
 
 " CLIPBOARD MAGIC (assumes set clipboard!=unnamed)
 nnoremap <leader>y "+y " enables copying the result of complex motions to the OS clipboard
