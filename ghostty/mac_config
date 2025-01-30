@@ -25,3 +25,5 @@ clipboard-paste-protection = true
 # command = /usr/local/bin/zellij
 
 keybind = global:ctrl+s=toggle_quick_terminal
+
+# testing
