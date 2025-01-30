@@ -26,4 +26,4 @@ clipboard-paste-protection = true
 
 keybind = global:ctrl+s=toggle_quick_terminal
 
-# testing
+# testing 2
