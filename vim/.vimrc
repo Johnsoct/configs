@@ -41,7 +41,7 @@ set hls ic
 syntax enable
 colorscheme catppuccin-mocha " catpuccin catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 let g:airline_theme='minimalist'
-set clipboard=unnamedplus
+set clipboard=unnamed
 set relativenumber
 set re=0
 
