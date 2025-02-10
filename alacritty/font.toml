@@ -1,0 +1,4 @@
+[font]
+normal = { family = "DankMono Nerd Font Plus Codicons", style = "Regular" }
+bold = { family = "DankMono Nerd Font Plus Codicons", style = "Bold" }
+italic = { family = "DankMono Nerd Font Plus Codicons", style = "Italic" }

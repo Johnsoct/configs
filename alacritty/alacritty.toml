@@ -1,0 +1,25 @@
+[general]
+import = [ 
+    "~/.config/alacritty/theme.toml", 
+    "~/.config/alacritty/font.toml", 
+    "~/.config/alacritty/font-size.toml", 
+]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+offset = { y = 4 }
+
+[terminal]
+# MacOS route to zellij
+shell = "/opt/homebrew/bin/zellij"
+# shell = "/usr/local/bin/zellij"
+
+[window]
+    blur = true
+    decorations = "None"
+    dynamic_padding = true
+    opacity = 1
+    padding = { x = 20, y = 20 }
+    option_as_alt = "Both"

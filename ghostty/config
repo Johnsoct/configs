@@ -11,7 +11,7 @@ window-padding-y = 0
 window-padding-balance = false
 window-padding-color = extend
 window-inherit-working-directory = false
-window-decoration = false
+# window-decoration = false
 window-inherit-font-size = true
 window-save-state = always
 
@@ -20,8 +20,8 @@ clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 clipboard-paste-protection = true
 
-linux-cgroup = always
+# linux-cgroup = always
 
 # command = /usr/local/bin/zellij
 
-# keybind = global:ctrl+s=toggle_quick_terminal
+keybind = global:ctrl+s=toggle_quick_terminal
