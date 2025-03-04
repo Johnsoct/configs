@@ -25,7 +25,12 @@
         "import-notation": "string",
         "max-nesting-depth": 2,
         "media-feature-range-notation": "prefix",
-        "rule-empty-line-before": "always",
+        "rule-empty-line-before": [
+            "always",
+            {
+                "except": "first-nested"
+            }
+        ],
         "selector-attribute-quotes": "always",
         "selector-class-pattern": null,
         "selector-max-compound-selectors": 3,
@@ -74,4 +79,3 @@
         }
     ]
 }
-
