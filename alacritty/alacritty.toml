@@ -18,7 +18,7 @@ shell = "/opt/homebrew/bin/zellij"
 
 [window]
     blur = true
-    decorations = "None"
+    decorations = "Buttonless"
     dynamic_padding = true
     opacity = 1
     padding = { x = 20, y = 20 }
