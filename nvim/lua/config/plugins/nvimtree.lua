@@ -10,20 +10,40 @@ return {
         config = function()
             local api = require("nvim-tree.api")
 
-            -- Disable netrw (nvim built in file explorer)
-            -- vim.g.loaded_netrw = 1
-            -- vim.g.loaded_netrwPlugin = 1
-
             -- Optionally enabled 24-bit colour
-            vim.opt.termguicolors = true
-
             vim.keymap.set("n", "<space>e", api.tree.toggle)
             vim.keymap.set("n", "<space>fe", api.tree.focus)
 
             require("nvim-tree").setup({
-                on_attach = my_on_attach,
+                actions = {
+                    open_file = {
+                        quit_on_open = false,
+                    },
+                },
+                hijack_netrw = true,
+                reload_on_bufenter = true,
+                sync_root_with_cwd = true,
+                renderer = {
+                    highlight_opened_files = "name",
+                    highlight_modified = "name",
+                    icons = {
+                        git_placement = "right_align",
+                        modified_placement = "right_align",
+                        padding = "  ",
+                        show = {
+                            folder_arrow = false, -- Stupid empty box
+                            hidden = false,
+                        },
+                    },
+                },
                 view = {
+                    centralize_selection = true,
+                    relativenumber = true,
+                    signcolumn = "yes",
                     width = 40,
+                },
+                update_focused_file = {
+                    enable = true,
                 },
             })
         end,

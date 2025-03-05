@@ -16,7 +16,7 @@ return {
                 javascript = { "eslint_d" },
                 json = { "jsonlint" },
                 lua = { "luacheck" },
-                markdown = { "markdownlint" },
+                -- markdown = { "markdownlint" },
                 scss = { "stylelint" },
                 typescript = { "eslint_d" },
                 vue = { "eslint_d" },
@@ -50,7 +50,7 @@ return {
                 for _, file in ipairs(decoded) do
                     for _, warning in ipairs(file.warnings or {}) do
                         table.insert(diagnostics, {
-                            lnum = warning.line - 1,                          -- Neovim diagnostics use 0-based line numbers
+                            lnum = warning.line - 1, -- Neovim diagnostics use 0-based line numbers
                             col = warning.column and warning.column - 1 or 0, -- 0-based columns
                             end_lnum = warning.line - 1,
                             end_col = warning.column and warning.column or 1,

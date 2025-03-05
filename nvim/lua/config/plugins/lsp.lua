@@ -19,6 +19,7 @@ return {
                     "jsonls",
                     "lua_ls",
                     "marksman",
+                    "intelephense",
                     "sqlls",
                     "sqls",
                     "stylelint_lsp",
