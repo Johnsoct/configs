@@ -13,8 +13,8 @@ offset = { y = 4 }
 
 [terminal]
 # MacOS route to zellij
-shell = "/opt/homebrew/bin/zellij"
-# shell = "/usr/local/bin/zellij"
+# shell = "/opt/homebrew/bin/zellij"
+shell = "/usr/local/bin/zellij"
 
 [window]
     blur = true
