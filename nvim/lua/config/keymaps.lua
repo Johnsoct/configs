@@ -33,3 +33,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves selected code up on
 -- '< is the end of a highlighted region
 -- :m is performing a move of the selected region to outside of the highlighted
 -- press enter, then highlight my previous highlight (gv=gv)
+
+-- AUTOCOMPLETION
+vim.keymap.set("i", "<Tab>", function()
+    local pumvisible = vim.fn.pumvisible() == 1
+    if pumvisible then
+        return "<C-n><C-y>" -- Select first item and confirm
+    else
+        return "<Tab>" -- Insert literal tab otherwise
+    end
+end, { expr = true })
