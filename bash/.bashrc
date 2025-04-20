@@ -123,6 +123,7 @@ fi
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin
