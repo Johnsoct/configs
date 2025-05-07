@@ -1,4 +1,5 @@
 " VIM-PLUG BEGIN
+vnoremap <leader>y "+y " enables copying a thing in visual mode to OS clipboard
 " VIM-PLUG BEGIN
 " VIM-PLUG BEGIN
 

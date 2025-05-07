@@ -20,6 +20,7 @@ return {
                     "lua_ls",
                     "marksman",
                     "intelephense",
+                    "pyright",
                     "sqlls",
                     "sqls",
                     "stylelint_lsp",

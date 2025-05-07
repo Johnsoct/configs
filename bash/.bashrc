@@ -1,3 +1,4 @@
+export PATH=$PATH:/usr/local
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -120,10 +121,28 @@ fi
 # 	setopt PROMPT_SUBST
 # 	PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 # fi
+parse_git_branch() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  local branch color
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+
+  if ! git diff --cached --quiet --ignore-submodules -- 2>/dev/null; then
+    color="\e[33m"  # Yellow: staged but not committed
+  elif [[ -n "$(git status --porcelain --untracked-files=normal)" ]]; then
+    color="\e[31m"  # Red: unstaged changes
+  else
+    color="\e[32m"  # Green: clean
+  fi
+
+  echo -e "${color}${branch}\e[0m"
+}
+PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] $(parse_git_branch) \$ '
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/lib/luarocks/rocks-5.1
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin
