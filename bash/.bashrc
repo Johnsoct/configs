@@ -1,4 +1,3 @@
-export PATH=$PATH:/usr/local
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -140,14 +139,15 @@ parse_git_branch() {
 PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] $(parse_git_branch) \$ '
 
 # export a PATH with system directories, user directories, and custom paths
-export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/lib/luarocks/rocks-5.1
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/cargo/bin
 export PATH=$PATH:$HOME/.nvm/versions/node/v22.11.0/bin
 
 # FZF
@@ -157,8 +157,9 @@ export PATH=$PATH:$HOME/.nvm/versions/node/v22.11.0/bin
 #    */bash) eval "$(fzf --bash)" ;;
 #esac
 # Linux
-export PATH="$HOME/.fzf/bin:$PATH"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
+#export PATH="$HOME/.fzf/bin:$PATH"
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Zoxide
 # Mac
