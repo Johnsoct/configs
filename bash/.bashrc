@@ -40,38 +40,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -112,31 +80,26 @@ if ! shopt -oq posix; then
 fi
 . "$HOME/.cargo/env"
 
-# PS1
-# if [ -n "$ZSH_VERSION" ]; then
-# 	autoload -Uz vcs_info
-# 	precmd() { vcs_info }
-# 	zstyle ':vcs_info:git:*' formats '%b '
-# 	setopt PROMPT_SUBST
-# 	PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
-# fi
-parse_git_branch() {
-  git rev-parse --is-inside-work-tree &>/dev/null || return
-
-  local branch color
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
-
+parse_git_bg() {
   if ! git diff --cached --quiet --ignore-submodules -- 2>/dev/null; then
-    color="\e[33m"  # Yellow: staged but not committed
+    echo -e "\033[0;33m"  # Yellow: staged but not committed
   elif [[ -n "$(git status --porcelain --untracked-files=normal)" ]]; then
-    color="\e[31m"  # Red: unstaged changes
+    echo -e "\033[0;31m"  # Red: unstaged changes
   else
-    color="\e[32m"  # Green: clean
+    echo -e "\033[0;32m"  # Green: clean
   fi
-
-  echo -e "${color}${branch}\e[0m"
+  #if [[ $(git status -s 2> /dev/null) ]]; then
+  #  echo -e "\033[0;31m"
+  #else
+  #  echo -e "\033[0;32m"
+  #fi
 }
-PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] $(parse_git_branch) \$ '
+
+CWD="\w\[$(parse_git_bg)\]"
+GIT_BRANCH="$(git branch --show-current 2>/dev/null)\[\e[0m\]"
+TIME="\[\e[32m\]\t\[\e[0m\]"
+USER_AND_OS="\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;34m\]\h"
+PS1="${TIME} ${CWD} ${GIT_BRANCH} \$ "
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:/bin

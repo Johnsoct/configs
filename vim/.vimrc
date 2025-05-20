@@ -1,5 +1,5 @@
 " VIM-PLUG BEGIN
-vnoremap <leader>y "+y " enables copying a thing in visual mode to OS clipboard
+noremap <leader>y "+y " enables copying a thing in visual mode to OS clipboard
 " VIM-PLUG BEGIN
 " VIM-PLUG BEGIN
 
@@ -41,7 +41,7 @@ call plug#end()
 set hls ic
 syntax enable
 let g:airline_theme='minimalist'
-set clipboard=unnamed
+set clipboard=unnamedplus
 set relativenumber
 set re=0
 
