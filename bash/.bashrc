@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -72,34 +72,37 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 . "$HOME/.cargo/env"
 
 parse_git_bg() {
-  if ! git diff --cached --quiet --ignore-submodules -- 2>/dev/null; then
-    echo -e "\033[0;33m"  # Yellow: staged but not committed
-  elif [[ -n "$(git status --porcelain --untracked-files=normal)" ]]; then
-    echo -e "\033[0;31m"  # Red: unstaged changes
-  else
-    echo -e "\033[0;32m"  # Green: clean
-  fi
-  #if [[ $(git status -s 2> /dev/null) ]]; then
-  #  echo -e "\033[0;31m"
-  #else
-  #  echo -e "\033[0;32m"
-  #fi
+    if ! git diff --cached --quiet --ignore-submodules -- 2>/dev/null; then
+        echo -e "\033[0;33m" # Yellow: staged but not committed
+    elif [[ -n "$(git status --porcelain --untracked-files=normal)" ]]; then
+        echo -e "\033[0;31m" # Red: unstaged changes
+    else
+        echo -e "\033[0;32m" # Green: clean
+    fi
 }
 
-CWD="\w\[$(parse_git_bg)\]"
-GIT_BRANCH="$(git branch --show-current 2>/dev/null)\[\e[0m\]"
-TIME="\[\e[32m\]\t\[\e[0m\]"
+get_git_branch() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return
+
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+    color=$(parse_git_bg)
+
+    echo -e ":${color}${branch}\033[0m"
+}
+
+CWD='\w'
+TIME='\[\e[32m\]\t\[\e[0m\]'
 USER_AND_OS="\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;34m\]\h"
-PS1="${TIME} ${CWD} ${GIT_BRANCH} \$ "
+PS1="${TIME} ${CWD}\$(get_git_branch) \$ "
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:/bin
@@ -111,7 +114,8 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/share/cargo/bin
-export PATH=$PATH:$HOME/.nvm/versions/node/v22.11.0/bin
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.15.1/bin
+export PATH=$PATH:$HOME/.nvm/versions/node/v22.15.1/bin/npm
 
 # FZF
 # Mac
@@ -137,5 +141,5 @@ export PATH="$PATH:$HOME/dev/worldbanc/private/bin"
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
