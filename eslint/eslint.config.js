@@ -20,25 +20,95 @@ const jsRules = {
             "objects": "always-multiline",
         },
     ],
-    '@stylistic/js/consistent-return': 'off',
     '@stylistic/js/eol-last': ['error', 'always'],
-    '@stylistic/js/indent': ['error', 8, { 'ignoreComments': false, 'MemberExpression': 1, 'SwitchCase': 1 }],
+    '@stylistic/js/indent': ['error', 4, { 'ignoreComments': false, 'MemberExpression': 1, 'SwitchCase': 1 }],
     '@stylistic/js/keyword-spacing': 'error',
     '@stylistic/js/linebreak-style': ['error', 'unix'],
     '@stylistic/js/max-len': ['warn', { code: 120, 'ignoreStrings': true }],
     '@stylistic/js/multiline-ternary': ['warn', 'always'],
     '@stylistic/js/no-console': 'off',
-    '@stylistic/js/no-debugger': process.env.NODE_ENV === 'production'
-        ? 'warn'
-        : 'off',
     '@stylistic/js/no-plusplus': 'off',
     '@stylistic/js/no-restricted-globals': 'off',
     '@stylistic/js/object-curly-spacing': ['error', 'always'],
     '@stylistic/js/semi': ['error', 'always'],
     '@stylistic/js/space-before-blocks': ['warn', 'always'],
     '@stylistic/js/space-before-function-paren': ['warn', 'always'],
+    'perfectionist/sort-array-includes': ['error', {
+        groups: [
+            'spread',
+            'literal',
+        ],
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-classes': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-decorators': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-exports': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-heritage-clauses': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-imports': ['error', {
+        environment: 'node',
+        fallbackSort: { type: 'unsorted' },
+        groups: [
+            ['builtin', 'external', 'subpath'],
+            ['internal', 'parent', 'siblings'],
+            'type',
+            'style',
+            ['side-effect', 'side-effect-style'],
+        ],
+        ignoreCase: true,
+        order: "asc",
+        partitionByComment: true,
+        specialCharacters: 'keep',
+        type: "alphabetical", 
+        'newlines-between': 'ignore',
+    }],
+    'perfectionist/sort-maps': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-named-exports': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-named-imports': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-objects': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-sets': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-switch-case': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-vue-attributes': 'off',
+    'perfectionist/sort-variable-declarations': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
     'arrow-body-style': ['warn', 'always'],
+    'consistent-return': 'off',
     'curly': 'error',
+    'no-debugger': process.env.NODE_ENV === 'production'
+        ? 'warn'
+        : 'off',
     'no-param-reassign': 'error',
     'no-return-assign': ['error', 'except-parens'],
     'no-unused-vars': 'off',
@@ -48,16 +118,27 @@ const jsRules = {
 const tsRules = {
     ...jsRules,
     '@typescript-eslint/no-unused-vars': 'off',
-    'perfectionist/sort-imports': ['off', {
-        groups: [
-            ['builtin', 'external'],
-            ['internal'],
-            ['parent', 'siblings', 'side-effect'],
-            ['side-effect-style'],
-        ],
-        'newlines-between': 'ignore',
+    'perfectionist/sort-enums': ['error', {
+        order: 'asc',
+        sortByValue: false,
+        type: 'alphabetical',
     }],
-    'perfectionist/sort-vue-attributes': 'off',
+    'perfectionist/sort-interfaces': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-intersection-types': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-object-types': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
+    'perfectionist/sort-union-types': ['error', {
+        order: 'asc',
+        type: 'alphabetical',
+    }],
 }
 const vueRules = {
     '@stylistic/js/indent': 'off', // Turn off in favor of 'vue/script-indent'
