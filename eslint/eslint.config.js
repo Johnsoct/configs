@@ -1,3 +1,4 @@
+import cypress from 'eslint-plugin-cypress/flat'
 import eslint from '@eslint/js'
 import globals from 'globals'
 import perfectionist from 'eslint-plugin-perfectionist'
@@ -47,7 +48,7 @@ const jsRules = {
     ],
     '@stylistic/multiline-ternary': [ 'error', 'always' ],
     '@stylistic/object-curly-spacing': [ 'error', 'always' ],
-    '@stylistic/semi': [ 'error', 'never' ],
+    '@stylistic/semi': [ 'error', 'always' ],
     '@stylistic/space-before-blocks': [ 'error', 'always' ],
     '@stylistic/space-before-function-paren': [ 'error', 'always' ],
     'perfectionist/sort-array-includes': [ 'error', {
@@ -81,7 +82,7 @@ const jsRules = {
         },
         groups: [
             [ 'builtin', 'external', 'subpath' ],
-            [ 'internal', 'parent', 'siblings' ],
+            [ 'internal', 'parent', 'sibling' ],
             'type',
             'style',
             [ 'side-effect', 'side-effect-style' ],
@@ -91,7 +92,6 @@ const jsRules = {
         partitionByComment: true,
         specialCharacters: 'keep',
         type: 'alphabetical',
-        'newlines-between': 'ignore',
     }],
     'perfectionist/sort-maps': [ 'error', {
         order: 'asc',
@@ -121,10 +121,8 @@ const jsRules = {
         order: 'asc',
         type: 'alphabetical',
     }],
+    'arrow-body-style': [ 'error', 'always' ],
     'curly': 'error',
-    'no-debugger': process.env.NODE_ENV === 'production'
-        ? 'warn'
-        : 'off',
     'no-param-reassign': 'error',
     'no-return-assign': 'error',
     'no-useless-escape': 'error',
@@ -152,15 +150,6 @@ const tsRules = {
     'perfectionist/sort-union-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-imports': ['error', {
-        groups: [
-            ['builtin', 'external'],
-            ['internal'],
-            ['parent', 'siblings', 'side-effect'],
-            ['side-effect-style'],
-        ],
-        'newlines-between': 'ignore',
     }],
 }
 const vueRules = {
@@ -215,7 +204,7 @@ const vueRules = {
         'baseIndent': 0,
     }],
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/v-bind-style': [ 'shorthand', {
+    'vue/v-bind-style': [ 'error', 'shorthand', {
         'sameNameShorthand': 'never',
     }],
     'vue/v-slot-style': [ 'error', {
@@ -245,7 +234,7 @@ const cypressConfig = {
             it: 'readonly',
         },
         parserOptions: {
-            parser: typescriptParser,
+            parser: typescript.parser,
             project: 'cypress/tsconfig.json',
         },
     },
@@ -270,10 +259,7 @@ const globalConfig = {
     },
 };
 const tsConfig = {
-    ...eslint.configs.recommended,
-    ...typescript.configs.recommended,
-    ...vue.configs[ 'flat/recommended' ],
-    files: [ '**/*.{js,mjs,cjs,ts,vue' ],
+    files: [ '**/*.{js,mjs,cjs,ts,vue}' ],
     ignores: [
         '**/cypress',
         '*.d.ts',
@@ -300,8 +286,13 @@ const tsConfig = {
 };
 
 export default [
+    eslint.configs.recommended,
+    ...typescript.configs.recommended,
+    ...vue.configs[ 'flat/recommended' ],
     globalConfig,
     tsConfig,
+    cypressConfig,
+
     // Overrides
     {
         files: ["*.vue"],
