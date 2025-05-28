@@ -6,34 +6,51 @@ import typescript from 'typescript-eslint'
 import vue from 'eslint-plugin-vue'
 
 const jsRules = {
-    '@stylistic/js/array-bracket-spacing': ['warn', 'always'],
-    '@stylistic/js/arrow-parens': [2, "as-needed", { "requireForBlockBody": true }],
-    '@stylistic/js/block-spacing': ['warn', 'always'],
-    '@stylistic/js/brace-style': ['warn', 'stroustrup', { 'allowSingleLine': false }],
-    '@stylistic/js/comma-dangle': [
+    '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
+    '@stylistic/arrow-parens': [ 'error', 'always' ],
+    '@stylistic/block-spacing': [ 'error', 'always' ],
+    '@stylistic/brace-style': [
+        'error',
+        'stroustrup',
+        {
+            'allowSingleLine': false,
+        }
+    ],
+    '@stylistic/comma-dangle': [
         'error',
         {
-            "arrays": "always-multiline",
-            "exports": "always-multiline",
-            "functions": "never",
-            "imports": "always-multiline",
-            "objects": "always-multiline",
+            'arrays': 'always-multiline',
+            'exports': 'always-multiline',
+            'functions': 'never',
+            'imports': 'always-multiline',
+            'objects': 'always-multiline',
         },
     ],
-    '@stylistic/js/eol-last': ['error', 'always'],
-    '@stylistic/js/indent': ['error', 4, { 'ignoreComments': false, 'MemberExpression': 1, 'SwitchCase': 1 }],
-    '@stylistic/js/keyword-spacing': 'error',
-    '@stylistic/js/linebreak-style': ['error', 'unix'],
-    '@stylistic/js/max-len': ['warn', { code: 120, 'ignoreStrings': true }],
-    '@stylistic/js/multiline-ternary': ['warn', 'always'],
-    '@stylistic/js/no-console': 'off',
-    '@stylistic/js/no-plusplus': 'off',
-    '@stylistic/js/no-restricted-globals': 'off',
-    '@stylistic/js/object-curly-spacing': ['error', 'always'],
-    '@stylistic/js/semi': ['error', 'always'],
-    '@stylistic/js/space-before-blocks': ['warn', 'always'],
-    '@stylistic/js/space-before-function-paren': ['warn', 'always'],
-    'perfectionist/sort-array-includes': ['error', {
+    '@stylistic/eol-last': [ 'error', 'always' ],
+    '@stylistic/indent': [
+        'error',
+        4,
+        {
+            'ignoreComments': false,
+            'MemberExpression': 1,
+            'SwitchCase': 1,
+        }
+    ],
+    '@stylistic/keyword-spacing': 'error',
+    '@stylistic/linebreak-style': [ 'error', 'unix' ],
+    '@stylistic/max-len': [
+        'warn',
+        {
+            'code': 120,
+            'ignoreStrings': true,
+        }
+    ],
+    '@stylistic/multiline-ternary': [ 'error', 'always' ],
+    '@stylistic/object-curly-spacing': [ 'error', 'always' ],
+    '@stylistic/semi': [ 'error', 'never' ],
+    '@stylistic/space-before-blocks': [ 'error', 'always' ],
+    '@stylistic/space-before-function-paren': [ 'error', 'always' ],
+    'perfectionist/sort-array-includes': [ 'error', {
         groups: [
             'spread',
             'literal',
@@ -41,130 +58,171 @@ const jsRules = {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-classes': ['error', {
+    'perfectionist/sort-classes': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-decorators': ['error', {
+    'perfectionist/sort-decorators': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-exports': ['error', {
+    'perfectionist/sort-exports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-heritage-clauses': ['error', {
+    'perfectionist/sort-heritage-clauses': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-imports': ['error', {
+    'perfectionist/sort-imports': [ 'error', {
         environment: 'node',
-        fallbackSort: { type: 'unsorted' },
+        fallbackSort: {
+            type: 'unsorted',
+        },
         groups: [
-            ['builtin', 'external', 'subpath'],
-            ['internal', 'parent', 'siblings'],
+            [ 'builtin', 'external', 'subpath' ],
+            [ 'internal', 'parent', 'siblings' ],
             'type',
             'style',
-            ['side-effect', 'side-effect-style'],
+            [ 'side-effect', 'side-effect-style' ],
         ],
         ignoreCase: true,
-        order: "asc",
+        order: 'asc',
         partitionByComment: true,
         specialCharacters: 'keep',
-        type: "alphabetical", 
+        type: 'alphabetical',
         'newlines-between': 'ignore',
     }],
-    'perfectionist/sort-maps': ['error', {
+    'perfectionist/sort-maps': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-named-exports': ['error', {
+    'perfectionist/sort-named-exports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-named-imports': ['error', {
+    'perfectionist/sort-named-imports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-objects': ['error', {
+    'perfectionist/sort-objects': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-sets': ['error', {
+    'perfectionist/sort-sets': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-switch-case': ['error', {
+    'perfectionist/sort-switch-case': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-vue-attributes': 'off',
-    'perfectionist/sort-variable-declarations': ['error', {
+    'perfectionist/sort-variable-declarations': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'arrow-body-style': ['warn', 'always'],
-    'consistent-return': 'off',
     'curly': 'error',
     'no-debugger': process.env.NODE_ENV === 'production'
         ? 'warn'
         : 'off',
     'no-param-reassign': 'error',
-    'no-return-assign': ['error', 'except-parens'],
-    'no-unused-vars': 'off',
-    'no-useless-escape': 'warn',
+    'no-return-assign': 'error',
+    'no-useless-escape': 'error',
     'prefer-object-spread': 'error',
 };
 const tsRules = {
     ...jsRules,
-    '@typescript-eslint/no-unused-vars': 'off',
-    'perfectionist/sort-enums': ['error', {
+    'perfectionist/sort-enums': [ 'error', {
         order: 'asc',
         sortByValue: false,
         type: 'alphabetical',
     }],
-    'perfectionist/sort-interfaces': ['error', {
+    'perfectionist/sort-interfaces': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-intersection-types': ['error', {
+    'perfectionist/sort-intersection-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-object-types': ['error', {
+    'perfectionist/sort-object-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
     }],
-    'perfectionist/sort-union-types': ['error', {
+    'perfectionist/sort-union-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
+    }],
+    'perfectionist/sort-imports': ['error', {
+        groups: [
+            ['builtin', 'external'],
+            ['internal'],
+            ['parent', 'siblings', 'side-effect'],
+            ['side-effect-style'],
+        ],
+        'newlines-between': 'ignore',
     }],
 }
 const vueRules = {
-    '@stylistic/js/indent': 'off', // Turn off in favor of 'vue/script-indent'
-    'vue/attributes-order': 'off',
-    'vue/html-indent': ['error', 4, {
+    // Unlike js and tsRules, the only rules here are modifications of the
+    // flat/recommended config from eslint-plugin-vue
+    'vue/attributes-order': [ 'error', {
+        'alphabetical': true,
+        'order': [
+            // v-slot, slot, #, is, v-is
+            [ 'SLOT', 'DEFINITION' ],
+            // v-for
+            'LIST_RENDERING',
+            // v-if, v-else-if, v-else, v-show, v-cloak, v-once, v-pre
+            [ 'CONDITIONALS', 'RENDER_MODIFIERS' ],
+            // v-custom-directive, v-text, v-html
+            [ 'OTHER_DIRECTIVES', 'CONTENT' ],
+            // v-model
+            'TWO_WAY_BINDING',
+            // @, v-on
+            'EVENTS',
+            // HTML attributes, props, ref, key
+            [ 'GLOBAL', 'OTHER_ATTR', 'UNIQUE' ], 
+        ],
+    }],
+    'vue/block-order': [ 'error', {
+        'order': [
+            'template',
+            'script',
+            'style[scoped]',
+            'style:not([scoped])',
+        ],
+    }],
+    // Works alongside vue/max-attributes-per-line
+    'vue/first-attribute-linebreak': [ 'error', {
+        'multiline': 'below',
+        'singleline': 'below',
+    }], 
+    'vue/html-indent': [ 'error', 4, {
         'attribute': 1,
         'alignAttributesVertically': true,
         'baseIndent': 1,
     }],
-    'vue/html-closing-bracket-newline': ['error', {
+    'vue/html-closing-bracket-newline': [ 'error', {
         'singleline': 'never',
         'multiline': 'always',
-        "selfClosingTag": {
-            "singleline": "never",
-            "multiline": "always"
+        'selfClosingTag': {
+            'singleline': 'never',
+            'multiline': 'always',
         }
     }],
-    'vue/multi-word-component-names': 'off',
-    'vue/no-side-effects-in-computed-properties': 'warn',
-    'vue/no-v-html': 'warn', // Warn (where we're using it, it is safe)
-    'vue/script-indent': ['error', 4, {
+    'vue/script-indent': [ 'error', 4, {
         'baseIndent': 0,
     }],
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/valid-template-root': 'off',
-    'vue/valid-v-for': 'off',
+    'vue/v-bind-style': [ 'shorthand', {
+        'sameNameShorthand': 'never',
+    }],
+    'vue/v-slot-style': [ 'error', {
+        'atComponent': 'shorthand',
+        'default': 'shorthand',
+        'named': 'shorthand',
+    }],
 }
 const cypressConfig = {
     files: [
@@ -214,10 +272,10 @@ const globalConfig = {
 const tsConfig = {
     ...eslint.configs.recommended,
     ...typescript.configs.recommended,
-    ...vue.configs['flat/recommended'],
-    files: [ "**/*.{js,mjs,cjs,ts,vue" ],
+    ...vue.configs[ 'flat/recommended' ],
+    files: [ '**/*.{js,mjs,cjs,ts,vue' ],
     ignores: [
-        "**/cypress",
+        '**/cypress',
         '*.d.ts',
         '**/coverage',
         '**/dist',
@@ -229,7 +287,7 @@ const tsConfig = {
         parserOptions: {
             parser: typescript.parser,
         },
-        sourceType: "module",
+        sourceType: 'module',
     },
     plugins: {
         perfectionist,
@@ -244,4 +302,11 @@ const tsConfig = {
 export default [
     globalConfig,
     tsConfig,
+    // Overrides
+    {
+        files: ["*.vue"],
+        rules: {
+            "stylistic/js/indent": "off",
+        },
+    },
 ];
