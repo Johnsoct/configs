@@ -11,11 +11,14 @@
         "comment-whitespace-inside": "always",
         "custom-property-empty-line-before": "never",
         "declaration-block-no-redundant-longhand-properties": false,
+        "declaration-block-no-shorthand-property-overrides": true,
         "declaration-empty-line-before": "never",
         "declaration-property-unit-allowed-list": {
             "font-size": [
                 "px",
-                "rem"
+                "rem",
+                "vh",
+                "vw"
             ]
         },
         "font-family-name-quotes": "always-unless-keyword",

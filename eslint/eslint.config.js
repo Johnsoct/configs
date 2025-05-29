@@ -1,202 +1,299 @@
-import eslint from '@eslint/js'
-import globals from 'globals'
-import perfectionist from 'eslint-plugin-perfectionist'
-import stylistic from '@stylistic/eslint-plugin'
-import typescript from 'typescript-eslint'
-import vue from 'eslint-plugin-vue'
+import eslint from '@eslint/js';
+import html from '@html-eslint/eslint-plugin';
+import htmlParser from '@html-eslint/parser';
+import stylistic from '@stylistic/eslint-plugin';
+import perfectionist from 'eslint-plugin-perfectionist';
+import vue from 'eslint-plugin-vue';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import typescript from 'typescript-eslint';
+import vueParser from 'vue-eslint-parser';
 
-const jsRules = {
-    '@stylistic/js/array-bracket-spacing': ['warn', 'always'],
-    '@stylistic/js/arrow-parens': [2, "as-needed", { "requireForBlockBody": true }],
-    '@stylistic/js/block-spacing': ['warn', 'always'],
-    '@stylistic/js/brace-style': ['warn', 'stroustrup', { 'allowSingleLine': false }],
-    '@stylistic/js/comma-dangle': [
-        'error',
+const htmlRules = {
+    'attrs-newline': [ 'error', {
+        closeStyle: 'newline',
+        ifAttrsMoreThan: 1,
+    } ],
+    'element-newline': [ 'error', {
+        inline: [ 'strong', 'span', 'em', 'pre', 'code', 'mark', 'cite', 'i', 'small' ],
+    } ],
+    'id-naming-convention': 'error',
+    'indent': [ 'error', 4 ],
+    'lowercase': 'error',
+    'max-element-depth': 'off',
+    'no-abstract-roles': 'error',
+    'no-accesskey-attrs': 'error',
+    'no-aria-hidden-body': 'error',
+    'no-duplicate-attrs': 'error',
+    'no-duplicate-class': 'error',
+    'no-duplicate-id': 'error',
+    'no-extra-spacing-attrs': 'error',
+    'no-extra-spacing-text': 'error',
+    'no-heading-inside-button': 'error',
+    'no-inline-styles': 'error',
+    'no-invalid-role': 'error',
+    'no-multiple-empty-lines': 'error',
+    'no-multiple-h1': 'error',
+    'no-nested-interactive': 'error',
+    'no-non-scalable-viewport': 'error',
+    'no-obsolete-tags': 'error',
+    'no-positive-tabindex': 'error',
+    'no-restricted-attr-values': 'off',
+    'no-restricted-attrs': 'off',
+    'no-script-style-type': 'error',
+    'no-skip-heading-levels': 'error',
+    'no-target-blank': 'error',
+    'no-trailing-spaces': 'error',
+    'prefer-https': 'error',
+    'quotes': 'error',
+    'require-attrs': [ 'error',
         {
-            "arrays": "always-multiline",
-            "exports": "always-multiline",
-            "functions": "never",
-            "imports": "always-multiline",
-            "objects": "always-multiline",
+            attr: 'alt',
+            tag: 'img',
+        },
+        {
+            attr: 'class',
+            tag: 'div',
+        },
+        {
+            attr: 'class',
+            tag: 'span',
         },
     ],
-    '@stylistic/js/eol-last': ['error', 'always'],
-    '@stylistic/js/indent': ['error', 4, { 'ignoreComments': false, 'MemberExpression': 1, 'SwitchCase': 1 }],
-    '@stylistic/js/keyword-spacing': 'error',
-    '@stylistic/js/linebreak-style': ['error', 'unix'],
-    '@stylistic/js/max-len': ['warn', { code: 120, 'ignoreStrings': true }],
-    '@stylistic/js/multiline-ternary': ['warn', 'always'],
-    '@stylistic/js/no-console': 'off',
-    '@stylistic/js/no-plusplus': 'off',
-    '@stylistic/js/no-restricted-globals': 'off',
-    '@stylistic/js/object-curly-spacing': ['error', 'always'],
-    '@stylistic/js/semi': ['error', 'always'],
-    '@stylistic/js/space-before-blocks': ['warn', 'always'],
-    '@stylistic/js/space-before-function-paren': ['warn', 'always'],
-    'perfectionist/sort-array-includes': ['error', {
+    'require-button-type': 'off',
+    'require-closing-tags': 'error',
+    'require-doctype': 'error',
+    'require-explicit-size': 'error',
+    'require-form-method': 'error',
+    'require-frame-title': 'error',
+    'require-img-alt': 'error',
+    'require-input-label': 'error',
+    'require-lang': 'error',
+    'require-li-container': 'error',
+    'require-meta-charset': 'error',
+    'require-meta-description': 'error',
+    'require-meta-viewport': 'error',
+    'require-open-graph-protocol': 'off',
+    'require-title': 'error',
+    'sort-attrs': 'error',
+    'use-baseline': 'error',
+};
+const jsRules = {
+    '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
+    '@stylistic/arrow-parens': [ 'error', 'always' ],
+    '@stylistic/block-spacing': [ 'error', 'always' ],
+    '@stylistic/brace-style': [
+        'error',
+        'stroustrup',
+        {
+            'allowSingleLine': false,
+        },
+    ],
+    '@stylistic/comma-dangle': [
+        'error',
+        {
+            'arrays': 'always-multiline',
+            'exports': 'always-multiline',
+            'functions': 'never',
+            'imports': 'always-multiline',
+            'objects': 'always-multiline',
+        },
+    ],
+    '@stylistic/eol-last': [ 'error', 'always' ],
+    '@stylistic/indent': [
+        'error',
+        4,
+        {
+            'ignoreComments': false,
+            'MemberExpression': 1,
+            'SwitchCase': 1,
+        },
+    ],
+    '@stylistic/keyword-spacing': 'error',
+    '@stylistic/linebreak-style': [ 'error', 'unix' ],
+    '@stylistic/max-len': [
+        'warn',
+        {
+            'code': 120,
+            'ignoreStrings': true,
+        },
+    ],
+    '@stylistic/multiline-ternary': [ 'error', 'always' ],
+    '@stylistic/object-curly-spacing': [ 'error', 'always' ],
+    '@stylistic/semi': [ 'error', 'always' ],
+    '@stylistic/space-before-blocks': [ 'error', 'always' ],
+    '@stylistic/space-before-function-paren': [ 'error', 'always' ],
+    'arrow-body-style': [ 'error', 'always' ],
+    'curly': 'error',
+    'no-param-reassign': 'error',
+    'no-return-assign': 'error',
+    'no-unused-vars': 'error',
+    'no-useless-escape': 'error',
+    'perfectionist/sort-array-includes': [ 'error', {
         groups: [
             'spread',
             'literal',
         ],
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-classes': ['error', {
+    } ],
+    'perfectionist/sort-classes': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-decorators': ['error', {
+    } ],
+    'perfectionist/sort-decorators': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-exports': ['error', {
+    } ],
+    'perfectionist/sort-exports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-heritage-clauses': ['error', {
+    } ],
+    'perfectionist/sort-heritage-clauses': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-imports': ['error', {
+    } ],
+    'perfectionist/sort-imports': [ 'error', {
         environment: 'node',
-        fallbackSort: { type: 'unsorted' },
+        fallbackSort: {
+            type: 'unsorted',
+        },
         groups: [
-            ['builtin', 'external', 'subpath'],
-            ['internal', 'parent', 'siblings'],
+            [ 'builtin', 'external', 'subpath' ],
+            [ 'internal', 'parent', 'sibling' ],
             'type',
             'style',
-            ['side-effect', 'side-effect-style'],
+            [ 'side-effect', 'side-effect-style' ],
         ],
         ignoreCase: true,
-        order: "asc",
+        order: 'asc',
         partitionByComment: true,
         specialCharacters: 'keep',
-        type: "alphabetical", 
-        'newlines-between': 'ignore',
-    }],
-    'perfectionist/sort-maps': ['error', {
+        type: 'alphabetical',
+    } ],
+    'perfectionist/sort-maps': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-named-exports': ['error', {
+    } ],
+    'perfectionist/sort-named-exports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-named-imports': ['error', {
+    } ],
+    'perfectionist/sort-named-imports': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-objects': ['error', {
+    } ],
+    'perfectionist/sort-objects': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-sets': ['error', {
+    } ],
+    'perfectionist/sort-sets': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-switch-case': ['error', {
+    } ],
+    'perfectionist/sort-switch-case': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-vue-attributes': 'off',
-    'perfectionist/sort-variable-declarations': ['error', {
+    } ],
+    'perfectionist/sort-variable-declarations': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'arrow-body-style': ['warn', 'always'],
-    'consistent-return': 'off',
-    'curly': 'error',
-    'no-debugger': process.env.NODE_ENV === 'production'
-        ? 'warn'
-        : 'off',
-    'no-param-reassign': 'error',
-    'no-return-assign': ['error', 'except-parens'],
-    'no-unused-vars': 'off',
-    'no-useless-escape': 'warn',
+    } ],
     'prefer-object-spread': 'error',
 };
 const tsRules = {
     ...jsRules,
-    '@typescript-eslint/no-unused-vars': 'off',
-    'perfectionist/sort-enums': ['error', {
+    'perfectionist/sort-enums': [ 'error', {
         order: 'asc',
         sortByValue: false,
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-interfaces': ['error', {
+    } ],
+    'perfectionist/sort-interfaces': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-intersection-types': ['error', {
+    } ],
+    'perfectionist/sort-intersection-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-object-types': ['error', {
+    } ],
+    'perfectionist/sort-object-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-    'perfectionist/sort-union-types': ['error', {
+    } ],
+    'perfectionist/sort-union-types': [ 'error', {
         order: 'asc',
         type: 'alphabetical',
-    }],
-}
+    } ],
+};
 const vueRules = {
-    '@stylistic/js/indent': 'off', // Turn off in favor of 'vue/script-indent'
-    'vue/attributes-order': 'off',
-    'vue/html-indent': ['error', 4, {
-        'attribute': 1,
-        'alignAttributesVertically': true,
-        'baseIndent': 1,
-    }],
-    'vue/html-closing-bracket-newline': ['error', {
-        'singleline': 'never',
+    'stylistic/js/indent': 'off',
+    // Unlike js and tsRules, the only rules here are modifications of the
+    // flat/recommended config from eslint-plugin-vue
+    'vue/attributes-order': [ 'error', {
+        'alphabetical': true,
+        'order': [
+            // v-slot, slot, #, is, v-is
+            [ 'SLOT', 'DEFINITION' ],
+            // v-for
+            'LIST_RENDERING',
+            // v-if, v-else-if, v-else, v-show, v-cloak, v-once, v-pre
+            [ 'CONDITIONALS', 'RENDER_MODIFIERS' ],
+            // v-custom-directive, v-text, v-html
+            [ 'OTHER_DIRECTIVES', 'CONTENT' ],
+            // v-model
+            'TWO_WAY_BINDING',
+            // @, v-on
+            'EVENTS',
+            // HTML attributes, props, ref, key
+            [ 'GLOBAL', 'OTHER_ATTR', 'UNIQUE' ],
+        ],
+    } ],
+    'vue/block-order': [ 'error', {
+        'order': [
+            'template',
+            'script',
+            'style[scoped]',
+            'style:not([scoped])',
+        ],
+    } ],
+    // Works alongside vue/max-attributes-per-line
+    'vue/first-attribute-linebreak': [ 'error', {
+        'multiline': 'below',
+        'singleline': 'ignore',
+    } ],
+    'vue/html-closing-bracket-newline': [ 'error', {
         'multiline': 'always',
-        "selfClosingTag": {
-            "singleline": "never",
-            "multiline": "always"
-        }
-    }],
-    'vue/multi-word-component-names': 'off',
-    'vue/no-side-effects-in-computed-properties': 'warn',
-    'vue/no-v-html': 'warn', // Warn (where we're using it, it is safe)
-    'vue/script-indent': ['error', 4, {
+        'selfClosingTag': {
+            'multiline': 'always',
+            'singleline': 'never',
+        },
+        'singleline': 'never',
+    } ],
+    'vue/html-indent': [ 'error', 4, {
+        'alignAttributesVertically': true,
+        'attribute': 1,
+        'baseIndent': 1,
+    } ],
+    'vue/max-attributes-per-line': [ 'error', {
+        'multiline': {
+            'max': 1,
+        },
+        'singleline': {
+            'max': 1,
+        },
+    } ],
+    'vue/script-indent': [ 'error', 4, {
         'baseIndent': 0,
-    }],
+    } ],
     'vue/singleline-html-element-content-newline': 'off',
-    'vue/valid-template-root': 'off',
-    'vue/valid-v-for': 'off',
-}
-const cypressConfig = {
-    files: [
-        'cypress/**/*.{cy,spec}.{ts,jsx,tsx}',
-        'cypress/**/*.{js,ts,jsx,tsx}',
-        'src/**/*.{cy,spec}.*',
-        'examples/lint-examples.unit.spec.js',
-    ],
-    languageOptions: {
-        globals: {
-            after: 'readonly',
-            afterEach: 'readonly',
-            before: 'readonly',
-            beforeEach: 'readonly',
-            context: 'readonly',
-            cy: 'readonly',
-            Cypress: 'readonly',
-            describe: 'readonly',
-            expect: 'readonly',
-            it: 'readonly',
-        },
-        parserOptions: {
-            parser: typescriptParser,
-            project: 'cypress/tsconfig.json',
-        },
-    },
-    plugins: {
-        cypress,
-    },
-    rules: {
-        ...cypress.configs.recommended.rules,
-    },
+    'vue/v-bind-style': [ 'error', 'shorthand', {
+        'sameNameShorthand': 'never',
+    } ],
+    'vue/v-slot-style': [ 'error', {
+        'atComponent': 'shorthand',
+        'default': 'shorthand',
+        'named': 'shorthand',
+    } ],
 };
 const globalConfig = {
     ignores: [
@@ -211,37 +308,91 @@ const globalConfig = {
         sourceType: 'module',
     },
 };
-const tsConfig = {
-    ...eslint.configs.recommended,
-    ...typescript.configs.recommended,
-    ...vue.configs['flat/recommended'],
-    files: [ "**/*.{js,mjs,cjs,ts,vue" ],
-    ignores: [
-        "**/cypress",
-        '*.d.ts',
-        '**/coverage',
-        '**/dist',
-        '*.config.{js,ts}',
-    ],
+const htmlConfig = {
+    ...html.configs[ 'flat/recommended' ],
+    files: [ '**/*.html' ],
     languageOptions: {
-        ecmaVersion: 2022,
-        globals: globals.browser,
-        parserOptions: {
-            parser: typescript.parser,
-        },
-        sourceType: "module",
+        parser: htmlParser,
     },
     plugins: {
-        perfectionist,
-        '@stylistic': stylistic,
+        '@html-eslint': html,
     },
     rules: {
-        ...tsRules,
-        ...vueRules,
+        // From maintainers: "Must be defined. If not, all recommended rules will be lost"
+        ...html.configs["flat/recommended"].rules,
+        // Our rules
+        ...htmlRules,
     },
 };
+const tsConfig = defineConfig([
+    eslint.configs.recommended,
+    typescript.configs.recommended,
+    {
+        files: [ '**/*.{js,mjs,cjs,ts}' ],
+        ignores: [
+            '*.d.ts',
+            '**/coverage',
+            '**/dist',
+        ],
+        plugins: {
+            '@stylistic': stylistic,
+            perfectionist,
+        },
+        rules: {
+            ...tsRules,
+        },
+    },
+]);
+const vueConfig = defineConfig([
+    ...vue.configs['flat/recommended'],
+    {
+        files: [ '**/*.vue' ],
+        languageOptions: {
+            parser: vueParser,
+            parserOptions: {
+                parser: typescript.parser,
+                sourceType: 'module',
+            },
+        },
+        rules: {
+            ...vueRules,
+            '@typescript-eslint/no-unused-vars': 'off',
+            'no-unused-vars': 'off',
+            //'vue/script-setup-uses-vars': 'error',
+        },
+    },
+]);
 
 export default [
     globalConfig,
-    tsConfig,
+    htmlConfig,
+    ...tsConfig,
+    ...vueConfig,
+
+    // Overrides
+    {
+        files: [ '**/stores/*.{js,ts}' ],
+        plugins: {
+            perfectionist,
+        },
+        rules: {
+            'perfectionist/sort-objects': [ 'error', {
+                customGroups: [
+                    {
+                        elementNamePattern: '^(?:state)$',
+                        groupName: 'top',
+                        selector: 'method',
+                    },
+                ],
+                groups: [
+                    'top',
+                    [ 'member', 'unknown' ],
+                    'method',
+                ],
+                order: 'asc',
+                type: 'alphabetical',
+            } ],
+        },
+    },
 ];
+
