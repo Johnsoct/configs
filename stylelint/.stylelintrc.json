@@ -5,6 +5,9 @@
         "stylelint-config-standard"
     ],
     "fix": true,
+    "ignoreFiles": [
+        "**/*.html"
+    ],
     "rules": {
         "color-function-notation": "modern",
         "color-hex-length": "long",
