@@ -21,23 +21,33 @@ return {
                     "marksman",
                     "intelephense",
                     "pyright",
-                    "sqlls",
                     "sqls",
                     "stylelint_lsp",
                     "ts_ls",
-                    "volar",
+                    "vue_ls",
                 },
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup({})
-                end,
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                -- ["vtsls"] = function()
-                -- require("vtsls").setup {}
-                -- end
+                handlers = {
+                    -- The first entry (without a key) will be the default handler
+                    -- and will be called for each installed server that doesn't have
+                    -- a dedicated handler.
+                    -- function(server_name) -- default handler (optional)
+                    --     require("lspconfig")[server_name].setup({})
+                    -- end,
+                    -- Next, you can provide a dedicated handler for specific servers.
+                    -- For example, a handler override for the `rust_analyzer`:
+                    -- ["vtsls"] = function()
+                    -- require("vtsls").setup {}
+                    -- end
+                    -- ["stylelint_lsp"] = function()
+                    --     require("lspconfig").stylelint_lsp.setup({
+                    --         filetypes = { "css", "scss", "vue" },
+                    --         settings = {
+                    --             autoFixOnFormat = true,
+                    --             autoFixOnSave = true,
+                    --         },
+                    --     })
+                    -- end,
+                },
             })
         end,
     },
@@ -68,29 +78,44 @@ return {
 
             -----------
             --- TS ----
-            -- --------
+            -----------
+            --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
             lsp.ts_ls.setup({
                 capabilities = blink,
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+                -- handlers = {
+                --     ["textDocument/publishDiagnostics"] = function() end,
+                -- },
                 init_options = {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = "~/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/language-server",
-                            languages = { "vue" },
+                            location = "~/.nvm/versions/node/v22.15.1/lib/node_modules/@vue/language-server",
+                            languages = { "javascript", "typescript", "vue" },
                         },
                     },
                 },
-                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+                -- on_attach = function(client, bufnr)
+                --     -- Disable diagnostics if using ESLint
+                --     client.server_capabilities.diagnosticProvider = false
+                -- end,
             })
 
             -----------
-            -- VOLAR --
+            -- VUE --
             -----------
-            lsp.volar.setup({
+            --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vue_ls.lua
+            local util = require("lspconfig.util")
+            lsp.vue_ls.setup({
+                before_init = function(_, config)
+                    if config.init_options and config.init_options.typescript and config.init_options.typescript.tsdk == '' then
+                        config.init_options.typescript.tsdk = util.get_typescript_server_path(config.root_dir)
+                    end
+                end,
                 filetypes = { "vue" },
                 init_options = {
-                    vue = {
-                        hybridMode = false,
+                    typescript = {
+                        tsdk = "~/.nvm/versions/node/v22.15.1/lib/node_modules/typescript",
                     },
                 },
             })
@@ -122,10 +147,11 @@ return {
             ---Stylelint---
             ---------------
             lsp.stylelint_lsp.setup({
+                filetypes = { "css", "scss", "vue" },
                 settings = {
                     autoFixOnFormat = true,
                     autoFixOnSave = true,
-                    filetypes = { "css", "scss", "less" },
+                    filetypes = { "css", "scss", "vue" },
                 },
                 stylelintplus = {
                     -- see available options in stylelint-lsp documentation
