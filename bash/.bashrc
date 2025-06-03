@@ -109,6 +109,7 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/lua-language-server/bin
 export PATH=$PATH:/usr/local/lib/luarocks/rocks-5.1
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:$HOME/go/bin
