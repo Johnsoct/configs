@@ -36,7 +36,7 @@ return {
                     scss = { "stylelint" },
                     sql = { "sqlfmt" },
                     typescript = { "eslint_d" },
-                    vue = { "eslint_d" },
+                    vue = { "eslint_d", "stylelint" },
                 },
             })
 

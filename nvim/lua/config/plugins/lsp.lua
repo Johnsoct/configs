@@ -1,60 +1,7 @@
 return {
     {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        config = function()
-            require("mason").setup()
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim" },
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "bashls",
-                    "cssls",
-                    "gopls",
-                    "html",
-                    "jsonls",
-                    "lua_ls",
-                    "marksman",
-                    "intelephense",
-                    "pyright",
-                    "sqls",
-                    "stylelint_lsp",
-                    "ts_ls",
-                    "vue_ls",
-                },
-                handlers = {
-                    -- The first entry (without a key) will be the default handler
-                    -- and will be called for each installed server that doesn't have
-                    -- a dedicated handler.
-                    -- function(server_name) -- default handler (optional)
-                    --     require("lspconfig")[server_name].setup({})
-                    -- end,
-                    -- Next, you can provide a dedicated handler for specific servers.
-                    -- For example, a handler override for the `rust_analyzer`:
-                    -- ["vtsls"] = function()
-                    -- require("vtsls").setup {}
-                    -- end
-                    -- ["stylelint_lsp"] = function()
-                    --     require("lspconfig").stylelint_lsp.setup({
-                    --         filetypes = { "css", "scss", "vue" },
-                    --         settings = {
-                    --             autoFixOnFormat = true,
-                    --             autoFixOnSave = true,
-                    --         },
-                    --     })
-                    -- end,
-                },
-            })
-        end,
-    },
-    {
         "neovim/nvim-lspconfig",
         dependencies = {
-            { "williamboman/mason-lspconfig.nvim" },
             {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
@@ -68,8 +15,21 @@ return {
             },
         },
         config = function()
+            local function get_global_npm_root()
+                local handle = io.popen("npm root -g")
+
+                if handle then
+                    local result = handle:read("*a")
+
+                    handle:close()
+
+                    return result:gsub("%s+", "") -- trim whitespace
+                end
+            end
+
             -- blink.cmp is a performant, batteries-included completion plugin for Neovim
             local blink = require("blink.cmp").get_lsp_capabilities()
+            local global_npm_root = get_global_npm_root()
             local lsp = require("lspconfig")
 
             lsp.lua_ls.setup({
@@ -82,7 +42,7 @@ return {
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
             lsp.ts_ls.setup({
                 capabilities = blink,
-                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+                filetypes = { "typescript", "javascript", "vue" },
                 -- handlers = {
                 --     ["textDocument/publishDiagnostics"] = function() end,
                 -- },
@@ -90,8 +50,8 @@ return {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = "~/.nvm/versions/node/v22.15.1/lib/node_modules/@vue/language-server",
-                            languages = { "javascript", "typescript", "vue" },
+                            location = global_npm_root .. "/@vue/typescript-plugin",
+                            languages = { "vue" },
                         },
                     },
                 },
@@ -104,18 +64,19 @@ return {
             -----------
             -- VUE --
             -----------
-            --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vue_ls.lua
-            local util = require("lspconfig.util")
-            lsp.vue_ls.setup({
-                before_init = function(_, config)
-                    if config.init_options and config.init_options.typescript and config.init_options.typescript.tsdk == '' then
-                        config.init_options.typescript.tsdk = util.get_typescript_server_path(config.root_dir)
+            --- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vue_ls
+            --- Uses a local TS server, but falls back to my global TS install
+            lsp.volar.setup({
+                before_init = function(params, config)
+                    local lib_path = vim.fs.find("node_modules/typescript/lib", { upward = true })
+                    if lib_path then
+                        config.init_options.typescript.tsdk = lib_path
                     end
                 end,
                 filetypes = { "vue" },
                 init_options = {
                     typescript = {
-                        tsdk = "~/.nvm/versions/node/v22.15.1/lib/node_modules/typescript",
+                        tsdk = global_npm_root .. "/typescript/lib",
                     },
                 },
             })
