@@ -81,6 +81,7 @@ fi
 . "$HOME/.cargo/env"
 
 parse_git_bg() {
+    # "\033[0;33m" is ANSI output, so no escaping with \[ or \]
     if ! git diff --cached --quiet --ignore-submodules -- 2>/dev/null; then
         echo -e "\033[0;33m" # Yellow: staged but not committed
     elif [[ -n "$(git status --porcelain --untracked-files=normal)" ]]; then
@@ -94,15 +95,17 @@ get_git_branch() {
     git rev-parse --is-inside-work-tree &>/dev/null || return
 
     branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
-    color=$(parse_git_bg)
 
-    echo -e ":${color}${branch}\033[0m"
+    echo "$branch"
 }
 
+# "" expand values such as variables or functions
+# '' literal
+COLOR_END='\[\033[0m\]'
 CWD='\w'
 TIME='\[\e[32m\]\t\[\e[0m\]'
-USER_AND_OS="\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;34m\]\h"
-PS1="${TIME} ${CWD}\$(get_git_branch) \$ "
+# \\ around function calls keep them dynamic
+PS1="${TIME} ${CWD}:\[\$(parse_git_bg)\]\$(get_git_branch)${COLOR_END} \$ "
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:/bin
