@@ -2,20 +2,70 @@
     "cache": true,
     "defaultSeverity": "warning",
     "extends": [
-        "stylelint-config-standard"
+        "stylelint-config-html/vue",
+        "stylelint-config-standard",
+        "stylelint-config-standard-scss",
+        "stylelint-config-standard-vue/scss"
     ],
     "fix": true,
     "ignoreFiles": [
-        "**/*.html"
+        "dist/*",
+        "public/*",
+        "**/*.{html,js,json,map,min.css,md,ts}"
+    ],
+    "plugins": [
+        "@stylistic/stylelint-plugin",
+        "stylelint-order"
     ],
     "rules": {
+        "@stylistic/block-closing-brace-empty-line-before": "never",
+        "@stylistic/block-closing-brace-newline-after": "always",
+        "@stylistic/block-closing-brace-newline-before": "always",
+        "@stylistic/block-opening-brace-newline-after": "always",
+        "@stylistic/block-opening-brace-newline-before": "never-multi-line",
+        "@stylistic/block-opening-brace-space-before": "always",
+        "@stylistic/indentation": [
+            4,
+            {
+                "indentInsideParens": "once-at-root-twice-in-block"
+            }
+        ],
+        "at-rule-empty-line-before": [
+            "always",
+            {
+                "except": [
+                    "after-same-name",
+                    "blockless-after-same-name-blockless",
+                    "first-nested"
+                ],
+                "ignore": [
+                    "after-comment"
+                ],
+                "ignoreAtRules": [
+                    "else",
+                    "mixin"
+                ]
+            }
+        ],
         "color-function-notation": "modern",
         "color-hex-length": "long",
         "comment-whitespace-inside": "always",
         "custom-property-empty-line-before": "never",
-        "declaration-block-no-redundant-longhand-properties": false,
+        "declaration-block-no-redundant-longhand-properties": null,
         "declaration-block-no-shorthand-property-overrides": true,
-        "declaration-empty-line-before": "never",
+        "declaration-empty-line-before": [
+            "always",
+            {
+                "except": [
+                    "after-declaration",
+                    "first-nested"
+                ],
+                "ignore": [
+                    "after-comment"
+                ]
+            }
+        ],
+        "declaration-no-important": true,
         "declaration-property-unit-allowed-list": {
             "font-size": [
                 "px",
@@ -29,8 +79,9 @@
         "function-name-case": "lower",
         "function-url-quotes": "always",
         "import-notation": "string",
-        "max-nesting-depth": 2,
+        "max-nesting-depth": 3,
         "media-feature-range-notation": "prefix",
+        "order/properties-alphabetical-order": true,
         "rule-empty-line-before": [
             "always",
             {
@@ -42,26 +93,27 @@
         "selector-max-compound-selectors": 3,
         "selector-pseudo-element-colon-notation": "double",
         "selector-type-case": "lower",
-        "shorthand-property-no-redundant-values": false,
+        "shorthand-property-no-redundant-values": null,
         "value-keyword-case": "lower"
     },
     "overrides": [
         {
             "files": [
-                "*.scss",
                 "**/*.scss"
             ],
-            "extends": [
-                "stylelint-config-standard-scss"
-            ],
             "rules": {
+                "scss/at-else-closing-brace-newline-after": null,
+                "scss/at-if-closing-brace-newline-after": null,
+                "scss/at-else-closing-brace-space-after": null,
+                "scss/at-if-closing-brace-space-after": null,
                 "scss/at-mixin-named-arguments": "always",
                 "scss/dollar-variable-empty-line-after": [
                     "always",
                     {
-                        "expect": [
-                            "last-nested",
-                            "before-dollar-variable"
+                        "except": [
+                            "before-comment",
+                            "before-dollar-variable",
+                            "last-nested"
                         ],
                         "ignore": [
                             "inside-single-line-block"
@@ -81,6 +133,21 @@
                     }
                 ],
                 "scss/dollar-variable-no-missing-interpolation": true
+            }
+        },
+        {
+            "customSyntax": "postcss-html",
+            "files": [
+                "**/*.vue"
+            ],
+            "rules": {
+                "@stylistic/indentation": [
+                    4,
+                    {
+                        "baseIndentLevel": 1
+                    }
+                ],
+                "declaration-property-value-no-unknown": null
             }
         }
     ]

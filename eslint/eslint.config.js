@@ -10,43 +10,43 @@ import typescript from 'typescript-eslint';
 import vueParser from 'vue-eslint-parser';
 
 const htmlRules = {
-    'attrs-newline': [ 'error', {
+    '@html-eslint/attrs-newline': [ 'error', {
         closeStyle: 'newline',
         ifAttrsMoreThan: 1,
     } ],
-    'element-newline': [ 'error', {
+    '@html-eslint/element-newline': [ 'error', {
         inline: [ 'strong', 'span', 'em', 'pre', 'code', 'mark', 'cite', 'i', 'small' ],
     } ],
-    'id-naming-convention': 'error',
-    'indent': [ 'error', 4 ],
-    'lowercase': 'error',
-    'max-element-depth': 'off',
-    'no-abstract-roles': 'error',
-    'no-accesskey-attrs': 'error',
-    'no-aria-hidden-body': 'error',
-    'no-duplicate-attrs': 'error',
-    'no-duplicate-class': 'error',
-    'no-duplicate-id': 'error',
-    'no-extra-spacing-attrs': 'error',
-    'no-extra-spacing-text': 'error',
-    'no-heading-inside-button': 'error',
-    'no-inline-styles': 'error',
-    'no-invalid-role': 'error',
-    'no-multiple-empty-lines': 'error',
-    'no-multiple-h1': 'error',
-    'no-nested-interactive': 'error',
-    'no-non-scalable-viewport': 'error',
-    'no-obsolete-tags': 'error',
-    'no-positive-tabindex': 'error',
-    'no-restricted-attr-values': 'off',
-    'no-restricted-attrs': 'off',
-    'no-script-style-type': 'error',
-    'no-skip-heading-levels': 'error',
-    'no-target-blank': 'error',
-    'no-trailing-spaces': 'error',
-    'prefer-https': 'error',
-    'quotes': 'error',
-    'require-attrs': [ 'error',
+    '@html-eslint/id-naming-convention': 'error',
+    '@html-eslint/indent': [ 'error', 4 ],
+    '@html-eslint/lowercase': 'error',
+    '@html-eslint/max-element-depth': 'off',
+    '@html-eslint/no-abstract-roles': 'error',
+    '@html-eslint/no-accesskey-attrs': 'error',
+    '@html-eslint/no-aria-hidden-body': 'error',
+    '@html-eslint/no-duplicate-attrs': 'error',
+    '@html-eslint/no-duplicate-class': 'error',
+    '@html-eslint/no-duplicate-id': 'error',
+    '@html-eslint/no-extra-spacing-attrs': 'error',
+    '@html-eslint/no-extra-spacing-text': 'error',
+    '@html-eslint/no-heading-inside-button': 'error',
+    '@html-eslint/no-inline-styles': 'error',
+    '@html-eslint/no-invalid-role': 'error',
+    '@html-eslint/no-multiple-empty-lines': 'error',
+    '@html-eslint/no-multiple-h1': 'error',
+    '@html-eslint/no-nested-interactive': 'error',
+    '@html-eslint/no-non-scalable-viewport': 'error',
+    '@html-eslint/no-obsolete-tags': 'error',
+    '@html-eslint/no-positive-tabindex': 'error',
+    '@html-eslint/no-restricted-attr-values': 'off',
+    '@html-eslint/no-restricted-attrs': 'off',
+    '@html-eslint/no-script-style-type': 'error',
+    '@html-eslint/no-skip-heading-levels': 'error',
+    '@html-eslint/no-target-blank': 'error',
+    '@html-eslint/no-trailing-spaces': 'error',
+    '@html-eslint/prefer-https': 'error',
+    '@html-eslint/quotes': 'error',
+    '@html-eslint/require-attrs': [ 'error',
         {
             attr: 'alt',
             tag: 'img',
@@ -60,23 +60,23 @@ const htmlRules = {
             tag: 'span',
         },
     ],
-    'require-button-type': 'off',
-    'require-closing-tags': 'error',
-    'require-doctype': 'error',
-    'require-explicit-size': 'error',
-    'require-form-method': 'error',
-    'require-frame-title': 'error',
-    'require-img-alt': 'error',
-    'require-input-label': 'error',
-    'require-lang': 'error',
-    'require-li-container': 'error',
-    'require-meta-charset': 'error',
-    'require-meta-description': 'error',
-    'require-meta-viewport': 'error',
-    'require-open-graph-protocol': 'off',
-    'require-title': 'error',
-    'sort-attrs': 'error',
-    'use-baseline': 'error',
+    '@html-eslint/require-button-type': 'off',
+    '@html-eslint/require-closing-tags': 'error',
+    '@html-eslint/require-doctype': 'error',
+    '@html-eslint/require-explicit-size': 'error',
+    '@html-eslint/require-form-method': 'error',
+    '@html-eslint/require-frame-title': 'error',
+    '@html-eslint/require-img-alt': 'error',
+    '@html-eslint/require-input-label': 'error',
+    '@html-eslint/require-lang': 'error',
+    '@html-eslint/require-li-container': 'error',
+    '@html-eslint/require-meta-charset': 'error',
+    '@html-eslint/require-meta-description': 'error',
+    '@html-eslint/require-meta-viewport': 'error',
+    '@html-eslint/require-open-graph-protocol': 'off',
+    '@html-eslint/require-title': 'error',
+    '@html-eslint/sort-attrs': 'error',
+    '@html-eslint/use-baseline': 'error',
 };
 const jsRules = {
     '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
@@ -226,7 +226,7 @@ const tsRules = {
     } ],
 };
 const vueRules = {
-    'stylistic/js/indent': 'off',
+    '@stylistic/indent': 'off',
     // Unlike js and tsRules, the only rules here are modifications of the
     // flat/recommended config from eslint-plugin-vue
     'vue/attributes-order': [ 'error', {
@@ -283,7 +283,7 @@ const vueRules = {
         },
     } ],
     'vue/script-indent': [ 'error', 4, {
-        'baseIndent': 0,
+        'baseIndent': 1,
     } ],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/v-bind-style': [ 'error', 'shorthand', {
@@ -330,7 +330,7 @@ const tsConfig = defineConfig([
     {
         files: [ '**/*.{js,mjs,cjs,ts}' ],
         ignores: [
-            '*.d.ts',
+            '**/*.d.ts',
             '**/coverage',
             '**/dist',
         ],
@@ -354,7 +354,12 @@ const vueConfig = defineConfig([
                 sourceType: 'module',
             },
         },
+        plugins: {
+            '@stylistic': stylistic,
+            perfectionist,
+        },
         rules: {
+            ...tsRules,
             ...vueRules,
             '@typescript-eslint/no-unused-vars': 'off',
             'no-unused-vars': 'off',
@@ -365,9 +370,9 @@ const vueConfig = defineConfig([
 
 export default [
     globalConfig,
-    htmlConfig,
     ...tsConfig,
     ...vueConfig,
+    htmlConfig,
 
     // Overrides
     {
@@ -395,5 +400,4 @@ export default [
         },
     },
 ];
-
 
