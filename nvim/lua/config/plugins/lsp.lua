@@ -71,9 +71,9 @@ return {
             local mod_cache = nil
             local util = require("lspconfig.util")
 
-            -----------
-            --- BASH ----
-            -----------
+            ------------
+            --- BASH ---
+            ------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/bashls.lua
             lsp.bashls.setup({
                 cmd = { "bash-language-server", "start" },
@@ -97,7 +97,7 @@ return {
             })
 
             -----------
-            --- CSS ----
+            --- CSS ---
             -----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/cssls.lua
             lsp.cssls.setup({
@@ -125,9 +125,9 @@ return {
                 },
             })
 
-            -----------
-            --- CSS VARIABLES ----
-            -----------
+            ---------------------
+            --- CSS VARIABLES ---
+            ---------------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/css_variables.lua
             lsp.css_variables.setup({
                 cmd = { "css-variables-language-server", "--stdio" },
@@ -156,9 +156,9 @@ return {
                 },
             })
 
-            -----------
-            --- GOLANGCI LINT ----
-            -----------
+            ---------------------
+            --- GOLANGCI LINT ---
+            ---------------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/golangci_lint_ls.lua
             lsp.golangci_lint_ls.setup({
                 cmd = { "golangci-lint-langserver" },
@@ -197,9 +197,9 @@ return {
                 end,
             })
 
-            -----------
-            --- GOPLS ----
-            -----------
+            -------------
+            --- GOPLS ---
+            -------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/gopls.lua
             lsp.gopls.setup({
                 cmd = { "gopls" },
@@ -224,9 +224,10 @@ return {
                 end,
                 single_file_support = true,
             })
-            -----------
-            --- HTML ----
-            -----------
+
+            ------------
+            --- HTML ---
+            ------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/html.lua
             --- `npm i -g vscode-langservers-extracted`
             lsp.html.setup({
@@ -242,9 +243,9 @@ return {
                 },
             })
 
-            -----------
-            --- JSON ----
-            -----------
+            ------------
+            --- JSON ---
+            ------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/jsonls.lua
             lsp.jsonls.setup({
                 cmd = { "vscode-json-language-server", "--stdio" },
@@ -258,7 +259,7 @@ return {
                 single_file_support = true,
             })
             -----------
-            --- LUA ----
+            --- LUA ---
             -----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/lua_ls.lua#L32
             local lua_root_files = {
@@ -279,9 +280,9 @@ return {
                 log_level = vim.lsp.protocol.MessageType.Warning,
             })
 
-            -----------
-            --- SOMESASS ----
-            -----------
+            ----------------
+            --- SOMESASS ---
+            ----------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/somesass_ls.lua
             --- `npm i -g some-sass-language-server`
             lsp.somesass_ls.setup({
@@ -297,9 +298,9 @@ return {
                 },
             })
 
-            -----------
+            ------------
             --- SQL ----
-            -----------
+            ------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/sqls.lua
             lsp.sqls.setup({
                 cmd = { "sqls" },
@@ -309,9 +310,9 @@ return {
                 settings = {},
             })
 
-            -----------
-            --- STYLELINT ----
-            -----------
+            -----------------
+            --- STYLELINT ---
+            -----------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/stylelint_lsp.lua
             local stylelint_root_file = {
                 ".stylelintrc",
@@ -338,9 +339,9 @@ return {
                 settings = {},
             })
 
-            -----------
-            --- TS ----
-            -----------
+            ----------
+            --- TS ---
+            ----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
             --- Installed via `npm install -g typescript typescript-language-server`
             lsp.ts_ls.setup({
@@ -362,7 +363,7 @@ return {
             })
 
             -----------
-            -- VUE --
+            --- VUE ---
             -----------
             -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/volar.lua
             --- Uses a local TS server, but falls back to my global TS install
