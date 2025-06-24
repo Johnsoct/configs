@@ -21,5 +21,5 @@ shell = "/usr/local/bin/zellij"
     decorations = "Buttonless"
     dynamic_padding = true
     opacity = 1
-    padding = { x = 20, y = 20 }
+    padding = { x = 0, y = 0 }
     option_as_alt = "Both"
