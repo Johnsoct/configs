@@ -1,4 +1,4 @@
-theme "catppuccin-mocha"
+theme "nord"
 on_force_close "quit"
 pane_frames false
 simplified_ui false 
