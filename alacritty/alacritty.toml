@@ -18,7 +18,7 @@ shell = "/usr/local/bin/zellij"
 
 [window]
     blur = true
-    decorations = "Buttonless"
+    decorations = "None"
     dynamic_padding = true
     opacity = 1
     padding = { x = 0, y = 0 }
