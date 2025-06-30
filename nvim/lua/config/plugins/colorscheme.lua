@@ -2,13 +2,21 @@ return {
     {
         {
             "catppuccin/nvim",
-            enabled = true,
+            enabled = false,
             config = function()
                 require("catppuccin").setup({
                     flavour = "mocha",
                 })
 
                 vim.cmd.colorscheme("catppuccin-mocha")
+            end,
+        },
+        {
+            "AlexvZyl/nordic.nvim",
+            enabled = true,
+            config = function()
+                -- require("nordic").load()
+                vim.cmd.colorscheme("nordic")
             end,
         },
         {

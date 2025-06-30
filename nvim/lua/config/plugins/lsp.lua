@@ -61,11 +61,7 @@ return {
                 end
             end
 
-            -- TODO: add capabilities (blink) to all LSPs
-
-            -- blink.cmp is a performant, batteries-included completion plugin for Neovim
             local async = require("lspconfig.async")
-            local blink = require("blink.cmp").get_lsp_capabilities()
             local global_npm_root = get_global_npm_root()
             local lsp = require("lspconfig")
             local mod_cache = nil
@@ -345,7 +341,6 @@ return {
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
             --- Installed via `npm install -g typescript typescript-language-server`
             lsp.ts_ls.setup({
-                capabilities = blink,
                 cmd = { "typescript-language-server", "--stdio" },
                 filetypes = { "typescript", "javascript", "vue" },
                 init_options = {
