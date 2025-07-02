@@ -83,7 +83,7 @@ return {
             vim.keymap.set("n", "<space>tq", tsqf, { desc = "telescope quickfix" })
 
             --g*
-            -- vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { noremap = true, silent = true })
+            vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { noremap = true, silent = true })
         end,
     },
 }
