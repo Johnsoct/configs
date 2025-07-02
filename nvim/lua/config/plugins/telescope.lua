@@ -28,10 +28,24 @@ return {
                     },
                 },
                 pickers = {
-                    -- TODO: help telescioe.builtin.find_files
+                    buffers = {
+                        theme = "ivy",
+                    },
                     find_files = {
                         hidden = true,
-                        theme = "dropdown",
+                        theme = "ivy",
+                    },
+                    grep_string = {
+                        theme = "ivy",
+                    },
+                    live_grep = {
+                        theme = "ivy",
+                    },
+                    oldfiles = {
+                        theme = "ivy",
+                    },
+                    quickfix = {
+                        theme = "ivy",
                     },
                 },
             })
