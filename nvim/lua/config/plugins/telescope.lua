@@ -32,7 +32,7 @@ return {
                         theme = "ivy",
                     },
                     find_files = {
-                        hidden = true,
+                        hidden = false,
                         theme = "ivy",
                     },
                     grep_string = {
