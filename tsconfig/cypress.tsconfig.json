@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig.json",
+    "include": [
+        "../env.d.ts",
+        "ambient.d.ts",
+        "module.d.ts",
+        "./**/*.ts"
+    ],
+    "compilerOptions": {
+        "tsBuildInfoFile": "../node_modules/.tmp/cypress/tsconfig.tsbuildinfo",
+        "types": [
+            "cypress"
+        ]
+    }
+}
