@@ -277,6 +277,17 @@ return {
             })
 
             ----------------
+            ---- PYTHON ----
+            ----------------
+            --- https://github.com/python-lsp/python-lsp-server?tab=readme-ov-file
+            lsp.pylsp.setup({
+                cmd = { "pylsp" },
+                filetypes = { "python" },
+                root_dir = util.root_pattern(".git", "setup.py", "pyproject.toml"),
+                single_file_support = true,
+            })
+
+            ----------------
             --- SOMESASS ---
             ----------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/somesass_ls.lua

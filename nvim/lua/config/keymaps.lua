@@ -35,10 +35,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves selected code up on
 -- press enter, then highlight my previous highlight (gv=gv)
 
 -- AUTOCOMPLETION
-vim.keymap.set("i", "<Tab>", function()
+vim.keymap.set("i", "<tab>", function()
     local pumvisible = vim.fn.pumvisible() == 1
     if pumvisible then
-        return "<C-n><C-y>" -- Select first item and confirm
+        return "<C-y>" -- Select first item and confirm
     else
         return "<Tab>" -- Insert literal tab otherwise
     end
