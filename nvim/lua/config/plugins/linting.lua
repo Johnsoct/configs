@@ -49,7 +49,7 @@ return {
             lint.linters_by_ft = {
                 bash = { "bash" },
                 css = { "stylelint" },
-                go = { "golangcilint" },
+                -- go = { "gopls" },
                 html = { "eslint_d" },
                 javascript = { "eslint_d" },
                 json = { "jsonlint" },

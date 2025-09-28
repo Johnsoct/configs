@@ -58,6 +58,26 @@ return {
         vim.keymap.set("n", keymap_prefix .. "rf", function()
             harpoon:list():remove_at(4)
         end, { desc = "Harpoon List Remove 4" })
+
+        vim.keymap.set("n", keymap_prefix .. "rg", function()
+            harpoon:list():remove_at(5)
+        end, { desc = "Harpoon List Remove 5" })
+
+        vim.keymap.set("n", keymap_prefix .. "rh", function()
+            harpoon:list():remove_at(6)
+        end, { desc = "Harpoon List Remove 6" })
+
+        vim.keymap.set("n", keymap_prefix .. "rj", function()
+            harpoon:list():remove_at(7)
+        end, { desc = "Harpoon List Remove 7" })
+
+        vim.keymap.set("n", keymap_prefix .. "rk", function()
+            harpoon:list():remove_at(8)
+        end, { desc = "Harpoon List Remove 8" })
+
+        vim.keymap.set("n", keymap_prefix .. "rl", function()
+            harpoon:list():remove_at(9)
+        end, { desc = "Harpoon List Remove 9" })
         -- REMOVE end
         -- REMOVE end
         -- REMOVE end
@@ -80,6 +100,26 @@ return {
         vim.keymap.set("n", keymap_prefix .. "Rf", function()
             harpoon:list():replace_at(4)
         end, { desc = "Harpoon List Replace 4" })
+
+        vim.keymap.set("n", keymap_prefix .. "Rg", function()
+            harpoon:list():replace_at(5)
+        end, { desc = "Harpoon List Replace 5" })
+
+        vim.keymap.set("n", keymap_prefix .. "Rh", function()
+            harpoon:list():replace_at(6)
+        end, { desc = "Harpoon List Replace 6" })
+
+        vim.keymap.set("n", keymap_prefix .. "Rj", function()
+            harpoon:list():replace_at(7)
+        end, { desc = "Harpoon List Replace 7" })
+
+        vim.keymap.set("n", keymap_prefix .. "Rk", function()
+            harpoon:list():replace_at(8)
+        end, { desc = "Harpoon List Replace 8" })
+
+        vim.keymap.set("n", keymap_prefix .. "Rl", function()
+            harpoon:list():replace_at(9)
+        end, { desc = "Harpoon List Replace 9" })
         -- REPLACE_AT end
         -- REPLACE_AT end
         -- REPLACE_AT end
@@ -102,6 +142,26 @@ return {
         vim.keymap.set("n", keymap_prefix .. "f", function()
             harpoon:list():select(4)
         end, { desc = "Harpoon List Select 4" })
+
+        vim.keymap.set("n", keymap_prefix .. "g", function()
+            harpoon:list():select(5)
+        end, { desc = "Harpoon List Select 5" })
+
+        vim.keymap.set("n", keymap_prefix .. "h", function()
+            harpoon:list():select(6)
+        end, { desc = "Harpoon List Select 6" })
+
+        vim.keymap.set("n", keymap_prefix .. "j", function()
+            harpoon:list():select(7)
+        end, { desc = "Harpoon List Select 7" })
+
+        vim.keymap.set("n", keymap_prefix .. "k", function()
+            harpoon:list():select(8)
+        end, { desc = "Harpoon List Select 8" })
+
+        vim.keymap.set("n", keymap_prefix .. "l", function()
+            harpoon:list():select(9)
+        end, { desc = "Harpoon List Select 9" })
         -- SELECT END
         -- SELECT END
         -- SELECT END

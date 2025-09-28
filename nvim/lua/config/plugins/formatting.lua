@@ -27,7 +27,7 @@ return {
 
                     bash = { "shfmt" },
                     css = { "stylelint" },
-                    go = { "goimports", "gofumpt" },
+                    go = { "gopls" },
                     html = { "eslint_d" },
                     javascript = { "eslint_d" },
                     json = { "fixjson" },

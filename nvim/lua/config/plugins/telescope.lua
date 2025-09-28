@@ -33,6 +33,8 @@ return {
                     },
                     find_files = {
                         hidden = false,
+                        -- Make .env, .json, .stylelintjson, etc. searchable
+                        no_ignore = true,
                         theme = "ivy",
                     },
                     grep_string = {

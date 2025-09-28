@@ -16,12 +16,7 @@ return {
                 "eslint_d",
                 "fixjson",
                 "gh-actions-language-server",
-                "go-debug-adapter",
-                "gofumpt",
-                "goimports",
-                "golangci-lint",
-                "golangci-lint-langserver",
-                "golines",
+                -- "go-debug-adapter",
                 "gopls",
                 "html-lsp",
                 "js-debug-adapter",
@@ -152,47 +147,6 @@ return {
                 },
             })
 
-            ---------------------
-            --- GOLANGCI LINT ---
-            ---------------------
-            --- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/golangci_lint_ls.lua
-            lsp.golangci_lint_ls.setup({
-                cmd = { "golangci-lint-langserver" },
-                filetypes = { "go", "gomod" },
-                init_options = {
-                    command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" },
-                },
-                root_dir = function(fname)
-                    return util.root_pattern(
-                        ".golangci.yml",
-                        ".golangci.yaml",
-                        ".golangci.toml",
-                        ".golangci.json",
-                        "go.work",
-                        "go.mod",
-                        ".git"
-                    )(fname)
-                end,
-                before_init = function(_, config)
-                    -- Add support for golangci-lint V1 (in V2 `--out-format=json` was replaced by
-                    -- `--output.json.path=stdout`).
-                    local v1
-                    -- PERF: `golangci-lint version` is very slow (about 0.1 sec) so let's find
-                    -- version using `go version -m $(which golangci-lint) | grep '^\smod'`.
-                    if vim.fn.executable("go") == 1 then
-                        local exe = vim.fn.exepath("golangci-lint")
-                        local version = vim.system({ "go", "version", "-m", exe }):wait()
-                        v1 = string.match(version.stdout, "\tmod\tgithub.com/golangci/golangci%-lint\t")
-                    else
-                        local version = vim.system({ "golangci-lint", "version" }):wait()
-                        v1 = string.match(version.stdout, "version v?1%.")
-                    end
-                    if v1 then
-                        config.init_options.command = { "golangci-lint", "run", "--out-format", "json" }
-                    end
-                end,
-            })
-
             -------------
             --- GOPLS ---
             -------------
@@ -285,6 +239,16 @@ return {
                 filetypes = { "python" },
                 root_dir = util.root_pattern(".git", "setup.py", "pyproject.toml"),
                 single_file_support = true,
+                settings = {
+                    plugins = {
+                        autopep8 = {
+                            enabled = true,
+                        },
+                        yapf = {
+                            enabled = false,
+                        },
+                    },
+                },
             })
 
             ----------------
