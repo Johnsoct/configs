@@ -4,7 +4,6 @@ import = [
     "~/.config/alacritty/font.toml", 
     "~/.config/alacritty/font-size.toml", 
 ]
-live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
@@ -15,7 +14,7 @@ offset = { y = 4 }
 [terminal]
 # MacOS route to zellij
 # shell = "/opt/homebrew/bin/zellij"
-shell = { program = "/home/framework/.cargo/bin/zellij", args = [ "--layout", "default_layout" ] }
+shell = { program = "/usr/local/bin/zellij", args = [ "--layout", "default_layout" ] }
 
 [window]
 blur = true

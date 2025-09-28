@@ -1,2 +1,2 @@
 [general]
-import = ["~/.config/alacritty/nord.toml"]
+import = ["~/.config/alacritty/dracula.toml"]

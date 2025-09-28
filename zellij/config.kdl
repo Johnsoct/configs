@@ -1,4 +1,4 @@
-theme "nord"
+theme "dracula"
 on_force_close "quit"
 pane_frames false
 simplified_ui false 
@@ -12,122 +12,123 @@ keybinds {
     // Updating all Ctrl keybinds to Alt to avoid overlap with nvim/vim
     locked {
 	unbind "Ctrl g"
-	bind "Alt Shift g" { SwitchToMode "Normal"; }
+	bind "Super g" { SwitchToMode "Normal"; }
     }
 
     resize {
 	unbind "Ctrl n"
-	bind "Alt Shift n" { SwitchToMode "Normal"; }
+	bind "Super n" { SwitchToMode "Normal"; }
     }
 
     pane {
 	unbind "Ctrl p"
-	bind "Alt Shift p" { SwitchToMode "Normal"; }
+	bind "Super p" { SwitchToMode "Normal"; }
     }
 
     move {
 	unbind "Ctrl h"
-	bind "Alt Shift h" { SwitchToMode "Normal"; }
+	bind "Super h" { SwitchToMode "Normal"; }
     }
 
     tab {
 	unbind "Ctrl t"
-	bind "Alt Shift t" { SwitchToMode "Normal"; }
+	bind "Super t" { SwitchToMode "Normal"; }
     }
 
     scroll {
 	unbind "Ctrl s"
-	bind "Alt Shift s" { SwitchToMode "Normal"; }
+	bind "Super s" { SwitchToMode "Normal"; }
 	unbind "Ctrl c"
-	bind "Alt Shift c" { ScrollToBottom; SwitchToMode "Normal"; }
+	bind "Super c" { ScrollToBottom; SwitchToMode "Normal"; }
 	unbind "Ctrl f"
-	bind "Alt Shift f" { PageScrollDown; }
+	bind "Super f" { PageScrollDown; }
 	unbind "Ctrl b"
-	bind "Alt Shift b" { PageScrollUp; }
+	bind "Super b" { PageScrollUp; }
     }
 
     search {
 	unbind "Ctrl s"
-	bind "Alt Shift s" { SwitchToMode "Normal"; }
+	bind "Super s" { SwitchToMode "Normal"; }
 	unbind "Ctrl c"
-	bind "Alt Shift c" { ScrollToBottom; SwitchToMode "Normal"; }
+	bind "Super c" { ScrollToBottom; SwitchToMode "Normal"; }
 	unbind "Ctrl f"
-	bind "Alt Shift f" { PageScrollDown; }
+	bind "Super f" { PageScrollDown; }
 	unbind "Ctrl b"
-	bind "Alt Shift b" { PageScrollUp; }
+	bind "Super b" { PageScrollUp; }
     }
 
     entersearch {
 	unbind "Ctrl c"
-	bind "Alt Shift c" { SwitchToMode "Scroll"; }
+	bind "Super c" { SwitchToMode "Scroll"; }
     }
 
     renametab {
 	unbind "Ctrl c"
-	bind "Alt Shift c" { SwitchToMode "Normal"; }
+	bind "Super c" { SwitchToMode "Normal"; }
     }
 
     renamepane {
 	unbind "Ctrl c"
-	bind "Alt Shift c" { SwitchToMode "Normal"; }
+	bind "Super c" { SwitchToMode "Normal"; }
     }
 
     session {
 	unbind "Ctrl o"
-	bind "Alt Shift o" { SwitchToMode "Normal"; }
+	bind "Super o" { SwitchToMode "Normal"; }
 	unbind "Ctrl s"
-	bind "Alt Shift s" { SwitchToMode "Scroll"; }
+	bind "Super s" { SwitchToMode "Scroll"; }
     }
 
     tmux {
 	unbind "Ctrl b"
-	bind "Alt Shift b" { Write 2; SwitchToMode "Normal"; }
+	bind "Super b" { Write 2; SwitchToMode "Normal"; }
     }
 
     shared_except "locked" {
 	unbind "Ctrl g"
-	bind "Alt Shift g" { SwitchToMode "Locked"; }
+	bind "Super g" { SwitchToMode "Locked"; }
 	unbind "Ctrl q"
-	bind "Alt Shift q" { Quit; }
+	bind "Super q" { Quit; }
     }
 
     shared_except "pane" "locked" {
 	unbind "Ctrl p"
-	bind "Alt Shift p" { SwitchToMode "Pane"; }
+	bind "Super p" { SwitchToMode "Pane"; }
     }
 
     shared_except "resize" "locked" {
 	unbind "Ctrl n"
-	bind "Alt Shift n" { SwitchToMode "Resize"; }
+	bind "Super n" { SwitchToMode "Resize"; }
     }
 
     shared_except "scroll" "locked" {
 	unbind "Ctrl s"
-	bind "Alt Shift s" { SwitchToMode "Scroll"; }
+	bind "Super s" { SwitchToMode "Scroll"; }
     }
 
     shared_except "session" "locked" {
 	unbind "Ctrl o"
-	bind "Alt Shift o" { SwitchToMode "Session"; }
+	bind "Super o" { SwitchToMode "Session"; }
     }
 
     shared_except "tab" "locked" {
 	unbind "Ctrl t"
-	bind "Alt Shift t" { SwitchToMode "Tab"; }
+	bind "Super t" { SwitchToMode "Tab"; }
     }
 
     shared_except "move" "locked" {
 	unbind "Ctrl h"
-	bind "Alt Shift h" { SwitchToMode "Move"; }
+	bind "Super h" { SwitchToMode "Move"; }
     }
 
     shared_except "tmux" "locked" {
 	unbind "Ctrl b"
-	bind "Alt Shift b" { SwitchToMode "Tmux"; }
+	bind "Super b" { SwitchToMode "Tmux"; }
     }
 
     shared_except "session" "locked" {
         unbind "Ctrl o"
-        bind "Alt Shift o" { SwitchToMode "Session"; }
+        bind "Super o" { SwitchToMode "Session"; }
     }
 }
+

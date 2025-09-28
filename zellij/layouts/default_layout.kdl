@@ -14,9 +14,35 @@ layout {
 		pane command="btop"
 	}
 
-	tab name="nvim" {
-		pane command="nvim" {
-			args "~/.config/nvim"
+	tab name="mwp" {
+		pane {
+			command "/opt/nvim-linux-x86_64/bin/nvim"
+			cwd "~/dev/magic-web-portal"
+			focus true
+			name "nvim"
+		}
+		pane split_direction="vertical" {
+			pane {
+				cwd "~/dev/magic-web-portal"
+				command "~/.nvm/versions/node/v22.19.0/bin/npm"
+				args "run" "test:unit"
+				name "unit tests"
+			}
+			pane {
+				cwd "~/dev/magic-web-portal"
+				name "component tests"
+			}
+			pane {
+				cwd "~/dev/magic-web-portal"
+				command "nr"
+				args "dev"
+				name "server"
+			}
+			pane {
+				cwd "~/dev/magic-web-portal"
+				command "lazygit"
+				name "lazygit"
+			}
 		}
 	}
 }
