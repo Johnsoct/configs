@@ -224,6 +224,13 @@ return {
             }
             lsp.lua_ls.setup({
                 cmd = { "lua-language-server" },
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                    },
+                },
                 filetypes = { "lua" },
                 root_dir = util.root_pattern(lua_root_files),
                 single_file_support = true,
@@ -386,14 +393,13 @@ return {
                             client.server_capabilities.documentFormattingProvider = false
                             client.server_capabilities.documentRangeFormattingProvider = false
                         end
-                        -- print(client.name, "supports text formatting")
-                        -- Format the current buffer on save
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            buffer = args.buf,
-                            callback = function()
-                                -- vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-                            end,
-                        })
+                        -- WARN: when active, creates conflicts during BufWritePre with conform
+                        -- vim.api.nvim_create_autocmd("BufWritePre", {
+                        --     buffer = args.buf,
+                        --     callback = function()
+                        -- vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                        --     end,
+                        -- })
                     end
                 end,
             })
