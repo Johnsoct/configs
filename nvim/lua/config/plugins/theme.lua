@@ -1,0 +1,1 @@
+/home/framework16/.config/omarchy/current/theme/neovim.lua

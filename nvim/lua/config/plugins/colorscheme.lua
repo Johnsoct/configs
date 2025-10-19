@@ -13,7 +13,7 @@ return {
         },
         {
             "AlexvZyl/nordic.nvim",
-            enabled = true,
+            enabled = false,
             config = function()
                 -- require("nordic").load()
                 vim.cmd.colorscheme("nordic")

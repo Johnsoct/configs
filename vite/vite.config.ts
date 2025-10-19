@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
 import aliases from './aliases';
+import pkg from './package.json';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,7 +12,8 @@ export default defineConfig({
             transformMixedEsModules: true,
         },
         emptyOutDir: true,
-        outDir: "dist",
+        // ../ required because root is set to "src" since main.ts is in /src
+        outDir: "../dist",
         reportCompressedSize: true,
     },
 
@@ -23,8 +25,20 @@ export default defineConfig({
         },
     },
 
+    define: {
+        __APP_VERSION__: JSON.stringify(pkg.version),
+    },
+
     plugins: [
-        vue(),
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => {
+                        return [ 'highlightjs' ].includes(tag);
+                    },
+                },
+            },
+        }),
         vueDevTools(),
     ],
 

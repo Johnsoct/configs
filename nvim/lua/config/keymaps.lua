@@ -1,6 +1,8 @@
 -- CURSOR MOVEMENT
-vim.keymap.set("n", "j", "jzz", { desc = "Move down and vertically center" })
-vim.keymap.set("n", "k", "kzz", { desc = "Move up and vertically center" })
+vim.keymap.set("n", "j", "jzz", { desc = "Move one down and vertically center" })
+vim.keymap.set("n", "k", "kzz", { desc = "Move one up and vertically center" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move halfway down and vertically center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move halfway up and vertically center" })
 
 -- EXIT WHILE INSERTING
 vim.keymap.set("i", "<C-c>", "<esc>", { desc = "Exit insert mode" })
@@ -25,8 +27,8 @@ vim.keymap.set("v", "<leader>y", '"+y', { desc = "enables copying a thing in vis
 vim.keymap.set("n", "<leader>Y", 'gg"+yG', { desc = "copies the entire file" })
 
 -- LINE MANIPULATION
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves selected code down one line" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves selected code up one line" })
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves selected code down one line" })
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves selected code up one line" })
 
 -- Explanation for line manipulation keymaps:
 -- '> is the beginning of a highlighted region

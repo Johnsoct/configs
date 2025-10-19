@@ -267,10 +267,29 @@ const jsRules = {
         type: 'alphabetical',
     } ],
     'perfectionist/sort-imports': [ 'error', {
+        // TODO: update to match aliases
         customGroups: [
+            {
+                elementNamePattern: '^@vitestConstants/.+',
+                groupName: 'vitestConstants',
+                order: 'asc',
+                type: 'alphabetical',
+            },
             {
                 elementNamePattern: '^@base/.+',
                 groupName: 'base-components',
+                order: 'asc',
+                type: 'alphabetical',
+            },
+            {
+                elementNamePattern: '^@interfaces/.+',
+                groupName: 'interfaces',
+                order: 'asc',
+                type: 'alphabetical',
+            },
+            {
+                elementNamePattern: '^@stores/.+',
+                groupName: 'stores',
                 order: 'asc',
                 type: 'alphabetical',
             },
@@ -303,10 +322,14 @@ const jsRules = {
         fallbackSort: {
             type: 'unsorted',
         },
+        // TODO: update to match aliases in alphabetical order
         groups: [
             'builtin',
             'external',
             [ 'internal', 'parent', 'subpath', 'sibling' ],
+            'vitestConstants',
+            'interfaces',
+            'stores',
             'composables',
             'smart-components',
             'base-components',
@@ -443,6 +466,13 @@ const vueRules = {
             'max': 1,
         },
     } ],
+    'vue/multi-word-component-names': [ 'error', {
+        'ignores': [
+            'magic',
+            'unauthenticated',
+            'unauthorized',
+        ],
+    } ],
     'vue/script-indent': [ 'error', 4, {
         'baseIndent': 1,
         'switchCase': 1,
@@ -457,11 +487,7 @@ const vueRules = {
         'named': 'shorthand',
     } ],
 };
-const globalConfig = {
-    ignores: [
-        '**/dist/**/*',
-        '**/node_modules/**/*',
-    ],
+const globalConfig = defineConfig({
     languageOptions: {
         ecmaVersion: 2022,
         globals: {
@@ -472,7 +498,7 @@ const globalConfig = {
     linterOptions: {
         noInlineConfig: true,
     },
-};
+});
 const htmlConfig = {
     ...html.configs[ 'flat/recommended' ],
     files: [ '**/*.html' ],
@@ -494,11 +520,6 @@ const tsConfig = defineConfig([
     typescript.configs.recommended,
     {
         files: [ '**/*.{js,mjs,cjs,ts}' ],
-        ignores: [
-            '**/*.d.ts',
-            '**/coverage',
-            '**/dist',
-        ],
         plugins: {
             '@stylistic': stylistic,
             perfectionist,
@@ -534,7 +555,19 @@ const vueConfig = defineConfig([
 ]);
 
 export default [
-    globalConfig,
+    // https://github.com/eslint/eslint/discussions/18304
+    // This is one of ESLint's most poor implementations, but the summary
+    // is global ignores need to be in their OWN config object and put
+    // at the top level, which is here
+    {
+        ignores: [
+            '**/dist/**/*',
+            '**/node_modules/**/*',
+            '**/stylelint.config.js',
+        ],
+    },
+
+    ...globalConfig,
     ...tsConfig,
     ...vueConfig,
     htmlConfig,
@@ -567,11 +600,14 @@ export default [
     // Enable inline ESLint config rule for selected file
     {
         files: [
-            '**/api/**/query.ts',
-            '**/odata/*.{test.ts,ts}',
-            '**/sand-box.vue',
             '**/*index.html',
+            '**/stylelint.config.js',
+            '**/api/**/query.ts',
             '**/composables/dynamicInputPropAttrs.ts',
+            '**/odata/*.{test.ts,ts}',
+            '**/types/user.ts',
+            '**/types/odata.ts',
+            '**/utility/console.ts',
         ],
         linterOptions: {
             noInlineConfig: false,

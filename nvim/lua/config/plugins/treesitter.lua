@@ -4,23 +4,8 @@ return {
         -- Tells Lazy to run TSUpdate whenever we update this plugin, which
         -- ensures treesitter is rebuilt whenever we download new queries (parsers)
         build = ":TSUpdate",
+        branch = "master",
         config = function()
-            vim.filetype.add({
-                pattern = {
-                    [".*%.blade%.php"] = "blade",
-                },
-            })
-
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.blade = {
-                install_info = {
-                    url = "https://github.com/EmranMR/tree-sitter-blade",
-                    files = { "src/parser.c" },
-                    branch = "main",
-                },
-                filetype = "blade",
-            }
-
             require("nvim-treesitter.configs").setup({
                 -- A list of parser names, or "all" (the listed parsers MUST always be installed)
                 -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
