@@ -9,9 +9,9 @@
 ---@field filters? table<string, trouble.FilterFn> custom filters
 ---@field sorters? table<string, trouble.SorterFn> custom sorters
 local defaults = {
-    auto_close = false,      -- auto close when there are no items
+    auto_close = true,      -- auto close when there are no items
     auto_open = false,       -- auto open when there are items
-    auto_preview = true,     -- automatically open preview when on an item
+    auto_preview = false,     -- automatically open preview when on an item
     auto_refresh = true,     -- auto refresh when open
     auto_jump = false,       -- auto jump to the item when there's only one
     focus = false,           -- Focus the window when opened

@@ -55,6 +55,41 @@ return {
             end,
         },
         {
+            "ramojus/mellifluous.nvim",
+            enabled = false,
+            config = function()
+                -- https://github.com/ramojus/mellifluous.nvim
+                require("mellifluous").setup({
+                    mellifluous = {
+                        neutral = true,
+                    },
+                })
+                vim.cmd.colorscheme("mellifluous")
+            end,
+        },
+        {
+            "davidosomething/vim-colors-meh.nvim",
+            enabled = false,
+            config = function()
+                vim.cmd.colorscheme("meh")
+            end,
+        },
+        {
+            "mellow-theme/mellow.nvim",
+            enabled = false,
+            config = function()
+                -- Plug 'mellow-theme/mellow.nvim'
+                vim.cmd.colorscheme("mellow")
+            end,
+        },
+        {
+            "p00f/alabaster.nvim",
+            enabled = false,
+            config = function()
+                vim.cmd.colorscheme("alabaster")
+            end,
+        },
+        {
             "nyoom-engineering/oxocarbon.nvim",
             enabled = false,
             config = function()
@@ -99,5 +134,19 @@ return {
                 })
             end,
         },
+        {
+            "zenbones-theme/zenbones.nvim",
+            -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+            -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+            -- In Vim, compat mode is turned on as Lush only works in Neovim.
+            dependencies = "rktjmp/lush.nvim",
+            enabled = true,
+            -- you can set set configuration options here
+            -- https://github.com/zenbones-theme/zenbones.nvim
+            config = function()
+                vim.g.zenbones_darken_comments = 45
+                vim.cmd.colorscheme('zenbones')
+            end
+        }
     },
 }

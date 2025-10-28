@@ -22,6 +22,7 @@ vim.opt.tabstop = 4 -- number of spaces a tab counts for
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.updatetime = 250
+vim.opt.termguicolors = true
 
 -- vim.api.hi
 -- vim.highlight "colorcolumn"

@@ -35,6 +35,7 @@ return {
                 "stylua",
                 "typescript-language-server",
                 "vue-language-server",
+                "vtsls",
                 "yaml-language-server",
                 "yamlfmt",
                 "yamllint",
@@ -413,7 +414,9 @@ return {
                 settings = {
                     stylelintplus = {
                         autoFixOnFormat = true,
+                        autoFixOnSave = true,
                         validateOnSave = true,
+                        validateOnType = true,
                     },
                 },
             })
@@ -509,6 +512,58 @@ return {
             lsp.enable("ts_ls")
 
             -----------
+            --- VTSLS ---
+            -----------
+            --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vtsls.lua
+            --- Uses a local TS server, but falls back to my global TS install
+            --- Installed via `npm install -g @vue/language-server`
+            lsp.config("vtsls", {
+                cmd = { "vtsls", "--stdio" },
+                init_options = {
+                    hostInfo = "neovim",
+                },
+                filetypes = {
+                    "javascript",
+                    "javascriptreact",
+                    "javascript.jsx",
+                    "typescript",
+                    "typescriptreact",
+                    "typescript.tsx",
+                    "vue",
+                },
+                settings = {
+                    vtsls = {
+                        tsserver = {
+                            globalPlugins = {
+                                {
+                                    name = "@vue/typescript-plugin",
+                                    location = vim.fn.stdpath("data")
+                                        .. "/mason/packages/vue-language-server/node_modules/@vue/typescript-plugin",
+                                    languages = { "vue" },
+                                    configNamespace = "typescript",
+                                },
+                            },
+                        },
+                    },
+                },
+                root_dir = function(bufnr, on_dir)
+                    -- The project root is where the LSP can be started from
+                    -- As stated in the documentation above, this LSP supports monorepos and simple projects.
+                    -- We select then from the project root, which is identified by the presence of a package
+                    -- manager lock file.
+                    local root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
+                    -- Give the root markers equal priority by wrapping them in a table
+                    root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, { ".git" } }
+                        or vim.list_extend(root_markers, { ".git" })
+                    -- We fallback to the current working directory if no project root is found
+                    local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+
+                    on_dir(project_root)
+                end,
+            })
+            lsp.enable("vtsls")
+
+            -----------
             --- VUE ---
             -----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vue_ls.lua
@@ -564,7 +619,7 @@ return {
                     client.handlers["tsserver/request"] = typescriptHandler
                 end,
             })
-            lsp.enable("volar")
+            lsp.enable("vue_ls")
         end,
     },
 }
