@@ -1,8 +1,8 @@
 [general]
-import = [ 
-    "~/.config/alacritty/theme.toml", 
-    "~/.config/alacritty/font.toml", 
-    "~/.config/alacritty/font-size.toml", 
+import = [
+    "./theme.toml",
+    "./font.toml",
+    "./font-size.toml"
 ]
 
 [env]
@@ -12,9 +12,8 @@ TERM = "xterm-256color"
 offset = { y = 4 }
 
 [terminal]
-# MacOS route to zellij
-# shell = "/opt/homebrew/bin/zellij"
-shell = { program = "/usr/local/bin/zellij", args = [ "--layout", "default_layout" ] }
+# shell = { program = "wsl", args = ["~", "-e", "zellij"] }
+shell = { program = "zellij" }
 
 [window]
 blur = true
@@ -24,3 +23,8 @@ opacity = 1
 padding = { x = 0, y = 0 }
 option_as_alt = "Both"
 startup_mode = "Fullscreen"
+
+[debug]
+persistent_logging = true
+log_level = "Debug"
+print_events = true
