@@ -7,7 +7,7 @@ git pull
 # Symlinks
 
 # Alacritty
-ln -s ./alacritty ~/.config
+ln -s ~/dev/dotfiles/alacritty ~/.config/alacritty
 
 # Bash
 # ln -s ./bash/.bashrc ~
