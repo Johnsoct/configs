@@ -12,18 +12,18 @@ ln -s ~/dev/dotfiles/alacritty ~/.config/alacritty
 # Bash
 ln -s ~/dev/dotfiles/bash/.bashrc ~
 ln -s ~/dev/dotfiles/bash/.bash_aliases ~
-#
-# # Fonts
+
+# Fonts
 ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
 ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
-#
+
 # # Nvim
 # ln -s ./nvim ~/.config
-#
-# # Vim
-# ln -s ./vim/.vimrc ~
-#
-# # Zellij
+
+# Vim
+ln -s ~/dev/dotfiles/vim/.vimrc ~
+
+# Zellij
 # ln -s ./zellij ~/.config
 
 # Additional Installs
