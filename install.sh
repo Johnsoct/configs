@@ -14,8 +14,8 @@ ln -s ~/dev/dotfiles/bash/.bashrc ~
 ln -s ~/dev/dotfiles/bash/.bash_aliases ~
 #
 # # Fonts
-ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts/d
-ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts/d
+ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts/d/
+ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts/d/
 #
 # # Nvim
 # ln -s ./nvim ~/.config
