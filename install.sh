@@ -18,7 +18,7 @@ ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fon
 ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
 
 # # Nvim
-# ln -s ./nvim ~/.config
+ln -s ~/dev/dotfiles/nvim ~/.config
 
 # Vim
 ln -s ~/dev/dotfiles/vim/.vimrc ~
