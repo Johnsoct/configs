@@ -24,7 +24,7 @@ ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.loc
 ln -s ~/dev/dotfiles/vim/.vimrc ~
 
 # Zellij
-# ln -s ./zellij ~/.config
+ln -s ~/dev/dotfiles/zellij ~/.config
 
 # Additional Installs
 # Additional Installs
