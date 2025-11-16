@@ -10,12 +10,12 @@ git pull
 ln -s ~/dev/dotfiles/alacritty ~/.config/alacritty
 
 # Bash
-ln -s ./dev/dotfiles/bash/.bashrc ~
-ln -s ./dev/dotfiles/bash/.bash_aliases ~
+ln -s ~/dev/dotfiles/bash/.bashrc ~
+ln -s ~/dev/dotfiles/bash/.bash_aliases ~
 #
 # # Fonts
-# ln -s ./fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
-# ln -s ./fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
+ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
+ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
 #
 # # Nvim
 # ln -s ./nvim ~/.config
