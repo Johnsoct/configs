@@ -41,4 +41,7 @@ ln -fs ~/dev/dotfiles/zellij ~/.config
 chmod +x ./node/global-packages.sh
 ./node/global-packages.sh
 
+chmod +x ./cli/cli-tool-install.sh
+./cli/cli-tool-install.sh
+
 source ~/.bashrc
