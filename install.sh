@@ -7,25 +7,29 @@ git pull
 # Symlinks
 # Symlinks
 
+# NOTE: -f - remove existing destination files
+# NOTE: -i - interactive prompt whether to remove destinations
+# NOTE: -s - make symlinks instead of hard links
+
 # Alacritty
-ln -s ~/dev/dotfiles/alacritty ~/.config
+ln -fs ~/dev/dotfiles/alacritty ~/.config
 
 # Bash
-ln -s ~/dev/dotfiles/bash/.bashrc ~
-ln -s ~/dev/dotfiles/bash/.bash_aliases ~
+ln -fs ~/dev/dotfiles/bash/.bashrc ~
+ln -fs ~/dev/dotfiles/bash/.bash_aliases ~
 
 # Fonts
-ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
-ln -s ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
+ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
+ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
 
 # # Nvim
-ln -s ~/dev/dotfiles/nvim ~/.config
+ln -fs ~/dev/dotfiles/nvim ~/.config
 
 # Vim
-ln -s ~/dev/dotfiles/vim/.vimrc ~
+ln -fs ~/dev/dotfiles/vim/.vimrc ~
 
 # Zellij
-ln -s ~/dev/dotfiles/zellij ~/.config
+ln -fs ~/dev/dotfiles/zellij ~/.config
 
 # Additional Installs
 # Additional Installs
