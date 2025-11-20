@@ -128,7 +128,7 @@ export PATH=$PATH:$HOME/.nvm/versions/node/v22.15.1/bin/npm
 #    */bash) eval "$(fzf --bash)" ;;
 #esac
 # Linux
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Zoxide
 # Mac
