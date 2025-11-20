@@ -1,4 +1,4 @@
-# git pull
+git pull
 
 # TODO: convert into a loop via an array
 # TODO: silent ln failures due to file already existing
@@ -22,10 +22,6 @@ ln -fs ~/dev/dotfiles/bash/.bash_aliases ~
 ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
 ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
 
-# FZF
-# ln -fs ~/dev/dotfiles/fzf/.fzf ~
-# ln -fs ~/dev/dotfiles/fzf/.fzf.bash ~
-
 # # Nvim
 ln -fs ~/dev/dotfiles/nvim ~/.config
 
@@ -38,8 +34,8 @@ ln -fs ~/dev/dotfiles/zellij ~/.config
 # Additional Installs
 # Additional Installs
 # Additional Installs
-# chmod +x ./node/global-packages.sh
-# ./node/global-packages.sh
+chmod +x ./node/global-packages.sh
+./node/global-packages.sh
 
 chmod +x ./cli/cli-tool-install.sh
 ./cli/cli-tool-install.sh --yes -y --assume-yes
