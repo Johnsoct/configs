@@ -1,12 +1,14 @@
 git pull
 
 # TODO: convert into a loop via an array
+# TODO: silent ln failures due to file already existing
 
 # Symlinks
 # Symlinks
 # Symlinks
 
 # Alacritty
+# BUG: when scripts runs, creates simlink also in ./alacritty
 ln -s ~/dev/dotfiles/alacritty ~/.config/alacritty
 
 # Bash
