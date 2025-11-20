@@ -24,6 +24,7 @@ ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.lo
 
 # FZF
 ln -fs ~/dev/dotfiles/fzf/.fzf ~
+ln -fs ~/dev/dotfiles/fzf/.fzf.bash ~
 
 # # Nvim
 ln -fs ~/dev/dotfiles/nvim ~/.config
