@@ -38,6 +38,7 @@ ln -fs ~/dev/dotfiles/zellij ~/.config
 # Additional Installs
 # Additional Installs
 # Additional Installs
+chmod +x ./node/global-packages.sh
 ./node/global-packages.sh
 
 source ~/.bashrc
