@@ -122,18 +122,9 @@ export PATH=$PATH:$HOME/.nvm/versions/node/v22.15.1/bin
 export PATH=$PATH:$HOME/.nvm/versions/node/v22.15.1/bin/npm
 
 # FZF
-# Mac
-#case $SHELL in
-#    */zsh) eval "$(fzf --zsh)" ;;
-#    */bash) eval "$(fzf --bash)" ;;
-#esac
-# Linux
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Zoxide
-# Mac
-# . /opt/homebrew/etc/profile.d/z.sh
-# Linux
 eval "$(zoxide init bash)"
 
 # TEMP - Boot.dev

@@ -17,6 +17,7 @@ ln -fs ~/dev/dotfiles/alacritty ~/.config
 # Bash
 ln -fs ~/dev/dotfiles/bash/.bashrc ~
 ln -fs ~/dev/dotfiles/bash/.bash_aliases ~
+source ~/.bashrc
 
 # Fonts
 ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
