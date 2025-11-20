@@ -17,11 +17,13 @@ ln -fs ~/dev/dotfiles/alacritty ~/.config
 # Bash
 ln -fs ~/dev/dotfiles/bash/.bashrc ~
 ln -fs ~/dev/dotfiles/bash/.bash_aliases ~
-source ~/.bashrc
 
 # Fonts
 ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFont-Regular.ttf ~/.local/share/fonts
 ln -fs ~/dev/dotfiles/fontpatcher/DankMonoNerdFontPlusCodicons-Regular.ttf ~/.local/share/fonts
+
+# FZF
+ln -fs ~/dev/dotfiles/fzf/.fzf ~
 
 # # Nvim
 ln -fs ~/dev/dotfiles/nvim ~/.config
@@ -36,3 +38,5 @@ ln -fs ~/dev/dotfiles/zellij ~/.config
 # Additional Installs
 # Additional Installs
 # ./node/global-packages.sh
+
+source ~/.bashrc
