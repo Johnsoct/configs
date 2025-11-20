@@ -8,8 +8,7 @@ git pull
 # Symlinks
 
 # Alacritty
-# BUG: when scripts runs, creates simlink also in ./alacritty
-ln -s ~/dev/dotfiles/alacritty ~/.config/alacritty
+ln -s ~/dev/dotfiles/alacritty ~/.config
 
 # Bash
 ln -s ~/dev/dotfiles/bash/.bashrc ~
