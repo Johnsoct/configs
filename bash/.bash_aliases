@@ -10,6 +10,7 @@ alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.
 alias py="python3"
 #alias vim="/usr/bin/gvim -v"
 alias nr="npm run"
+alias pn="pnpm"
 
 # LINUX
 alias battery="upower -i $(upower -e | grep BAT)"

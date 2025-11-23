@@ -225,7 +225,7 @@ return {
             --- HTML ---
             ------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/html.lua
-            --- `npm i -g vscode-langservers-extracted`
+            --- `pnpm add -g vscode-langservers-extracted`
             lsp.config("html", {
                 cmd = { "vscode-html-language-server", "--stdio" },
                 filetypes = { "html", "templ" },
@@ -353,7 +353,7 @@ return {
             --- SOMESASS ---
             ----------------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/somesass_ls.lua
-            --- `npm i -g some-sass-language-server`
+            --- `pnpm add -g some-sass-language-server`
             lsp.config("somesass_ls", {
                 name = "somesass_ls",
                 cmd = { "some-sass-language-server", "--stdio" },
@@ -429,7 +429,7 @@ return {
             --- TS ---
             ----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
-            --- Installed via `npm install -g typescript typescript-language-server`
+            --- Installed via `pnpm add -g typescript typescript-language-server`
             lsp.config("ts_ls", {
                 init_options = { hostInfo = "neovim" },
                 cmd = { "typescript-language-server", "--stdio" },
@@ -519,7 +519,7 @@ return {
             -----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vtsls.lua
             --- Uses a local TS server, but falls back to my global TS install
-            --- Installed via `npm install -g @vue/language-server`
+            --- Installed via `pnpm add -g @vue/language-server`
             lsp.config("vtsls", {
                 cmd = { "vtsls", "--stdio" },
                 init_options = {
@@ -571,7 +571,7 @@ return {
             -----------
             --- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vue_ls.lua
             --- Uses a local TS server, but falls back to my global TS install
-            --- Installed via `npm install -g @vue/language-server`
+            --- Installed via `pnpm add -g @vue/language-server`
             lsp.config("vue_ls", {
                 cmd = { "vue-language-server", "--stdio" },
                 filetypes = { "vue" },

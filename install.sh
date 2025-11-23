@@ -34,10 +34,19 @@ ln -fs ~/dev/dotfiles/zellij ~/.config
 # Additional Installs
 # Additional Installs
 # Additional Installs
-chmod +x ./node/global-packages.sh
-./node/global-packages.sh
 
+# WARN: must be installed before node global packages
 chmod +x ./cli/cli-tool-install.sh
 ./cli/cli-tool-install.sh --yes -y --assume-yes
 
+chmod +x ./node/global-packages.sh
+./node/global-packages.sh
+
 source ~/.bashrc
+
+# Configurations
+# Configurations
+# Configurations
+
+chmod +x ./git-config.sh
+./git-config.sh

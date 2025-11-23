@@ -1,6 +1,9 @@
 # TODO: check for `uname -a` to determine whether linux distro
 # is debian or fedora and install via apt/dnf
 
+# GIT
+sudo dnf install git
+
 # EZA
 git clone git@github.com:eza-community/eza.git
 cd eza
@@ -56,6 +59,11 @@ rm -rf ImageMagick-7.1.2
 
 # NVIM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# PNPM
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+corepack enable
+corepack prepare pnpm@latest --activate
 
 # VIM Enhanced
 sudo dnf install vim-enhanced
