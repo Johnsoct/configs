@@ -109,6 +109,7 @@ PS1="${TIME} ${CWD}:\[\$(parse_git_bg)\]\$(get_git_branch)${COLOR_END} \$ "
 
 # export a PATH with system directories, user directories, and custom paths
 export PATH=$PATH:/bin
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
@@ -127,9 +128,6 @@ eval "$(fzf --bash)"
 # Zoxide
 eval "$(zoxide init bash)"
 
-# TEMP - Boot.dev
-export PATH="$PATH:$HOME/dev/worldbanc/private/bin"
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
@@ -138,7 +136,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # pnpm
-export PNPM_HOME="/home/framework/.local/share/pnpm"
+export PNPM_HOME="/home/framework16/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
